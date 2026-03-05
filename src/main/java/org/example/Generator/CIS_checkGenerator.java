@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class CIS_checkGenerator {
 
     public static void generateChecks(List<CIS_Benchmark> rules) throws Exception {
