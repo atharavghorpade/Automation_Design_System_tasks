@@ -15,7 +15,7 @@ spec:
         app: automation-design-system
     spec:
       imagePullSecrets:
-        - name: ecr-registry-secret
+        - name: dockerhub-secret
       containers:
       - name: automation-app
         image: IMAGE_TAG
