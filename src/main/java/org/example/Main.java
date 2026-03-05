@@ -15,7 +15,8 @@ import org.example.model.CIS_Benchmark;
 import org.example.model.STIG_Benchmark;
 import org.example.runner.JSValidationRunner;
 
-public class Main {
+
+public class Main {  
 
     public static void main(String[] args) {
 
