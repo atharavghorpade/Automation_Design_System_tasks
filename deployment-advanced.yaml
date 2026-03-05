@@ -1,0 +1,158 @@
+# Optional: Advanced Kubernetes Configuration with HPA, PVC, and Health Checks
+# Use this if you need auto-scaling, persistent storage, and advanced features
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: automation-config
+data:
+  APP_ENV: "production"
+  LOG_LEVEL: "INFO"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: automation-design-system
+  labels:
+    app: automation-design-system
+    version: v1
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: automation-design-system
+  template:
+    metadata:
+      labels:
+        app: automation-design-system
+        version: v1
+    spec:
+      imagePullSecrets:
+        - name: ecr-registry-secret
+      containers:
+      - name: automation-app
+        image: IMAGE_TAG
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: APP_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: automation-config
+              key: APP_ENV
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: automation-config
+              key: LOG_LEVEL
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        livenessProbe:
+          exec:
+            command:
+            - pgrep
+            - -f
+            - java
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - pgrep
+            - -f
+            - java
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        volumeMounts:
+        - name: input-data
+          mountPath: /app/input
+        - name: output-data
+          mountPath: /app/output
+      volumes:
+      - name: input-data
+        emptyDir: {}
+      - name: output-data
+        persistentVolumeClaim:
+          claimName: automation-output-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: automation-design-system
+  labels:
+    app: automation-design-system
+spec:
+  type: LoadBalancer
+  selector:
+    app: automation-design-system
+  ports:
+  - port: 80
+    targetPort: 8080
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: automation-output-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: gp2
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: automation-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: automation-design-system
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: automation-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: automation-design-system
