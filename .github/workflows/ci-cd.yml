@@ -5,6 +5,16 @@ on:
     branches:
       - main
       - develop
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+      - 'Dockerfile'
+      - '.github/workflows/ci-cd.yml'
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
 
 env:
   AWS_REGION: us-east-1
