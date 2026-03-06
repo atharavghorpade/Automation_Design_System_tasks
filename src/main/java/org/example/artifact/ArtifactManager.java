@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 public class ArtifactManager {
 
     public static void generateArtifactsFromJS(
-            String basePath,
             String jsDirectory,
             String benchmarkType) {
 
@@ -33,12 +32,12 @@ public class ArtifactManager {
                 String jsContent = Files.readString(jsFile.toPath());
 
                 String artifactDirPath =
-                        basePath + "/output/artifacts/" +
-                        benchmarkType + "/checks";
+                        "output/artifacts/" +
+                        benchmarkType +
+                        "/checks";
 
                 Path artifactDir = Paths.get(artifactDirPath);
 
-                // Create folders if not present
                 if (!Files.exists(artifactDir)) {
                     Files.createDirectories(artifactDir);
                 }
