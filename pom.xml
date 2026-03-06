@@ -43,6 +43,15 @@
             <version>2.16.0</version>
         </dependency>
 
+        <build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+
 
 
             <dependency>
