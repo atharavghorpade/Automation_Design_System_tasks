@@ -24,5 +24,5 @@ public class PdfLoader {
         return pdfFiles[0];
     }
 
-}
+}  //end of class     
 
