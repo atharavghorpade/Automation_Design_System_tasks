@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.91",
     stigId: "CISC-RT-000940",
-    ruleId: "RULE ID: SV-216637r531085",
-    groupId: "GROUP ID: V-216637",
+    ruleId: "SV-216637r531085",
+    groupId: "V-216637",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  limit the amount of source-active messages it accepts on a per-peer basis.  GROUP ID: V-216637  RULE ID: SV-216637r531085",
     rationale: "To reduce any risk of a denial-of-service (DoS) attack from a rogue or misconfigured  MSDP router, the router must be configured to limit the number of source-active  messages it accepts from each peer.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to limit the amount of source-active messages it accepts from each  peer.  R8(config)#ip msdp sa-limit x.1.28.2 nnn",
     cci: "CCI-001368",
     expectedState: "Configure the router to limit the amount of source-active messages it accepts from each peer.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

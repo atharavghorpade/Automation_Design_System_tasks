@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.42",
     stigId: "CISC-RT-000400",
-    ruleId: "RULE ID: SV-216588r531085",
-    groupId: "GROUP ID: V-216588",
+    ruleId: "SV-216588r531085",
+    groupId: "V-216588",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  transport management traffic to the Network Operations Center (NOC) via dedicated  circuit, MPLS/VPN service, or IPsec tunnel.  GROUP ID: V-216588  RULE ID: SV-216588r531085",
     rationale: "Using dedicated paths, the OOBM backbone connects the OOBM gateway routers  located at the edge of the managed network and at the NOC. Dedicated links can be  deployed using provisioned circuits or MPLS Layer 2 and Layer 3 VPN services or  implementing a secured path with gateway-to-gateway IPsec tunnels. The tunnel mode  ensures that the management traffic will be logically separated from any other traffic  traversing the same path.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Ensure that a dedicated circuit, MPLS/VPN service, or IPsec tunnel is deployed to  transport management traffic between the managed network and the NOC. If an IPsec  tunnel is to be used, the steps below can be used as a guideline.  Step 1: Configure the ACL for the management network as the destination. This ACL  will be defined in the crypto as the interesting traffic to be forwarded into the IPsec  tunnel.  R4(config)#ip access-list extended MGMT_TRAFFIC_ACL  R4(config-ext-nacl)#permit ip 10.1.34.0 0.0.0.255 10.22.2.0 0.0.0.255  R4(config-ext-nacl)#exit  Step 2: Create an ISAKMP policy for Phase 1 negotiations.  R4(config)#crypto isakmp policy 10  R4(config-isakmp)#hash sha256  R4(config-isakmp)#authentication pre-share  R4(config-isakmp)#exit  Step 3: Specify the pre-shared key and the remote peer address.  R4(config)#crypto isakmp key 0 xxxxxx address x.1.12.1  Note: Digital certificates can be utilized as an alternative.  Step 4: Create the IPSec transform set for the data encryption  R4(config)#crypto ipsec transform-set TRANS_SET ah-sha256-hmac esp-aes  R4(cfg-crypto-trans)#mode tunnel  R4(cfg-crypto-trans)#exit  Step 5: Create the crypto map.  R4(config)#crypto map IPSEC_MGMT_MAP 10 ipsec-isakmp  R4(config-crypto-map)#set peer x.1.12.1  R4(config-crypto-map)#match address MGMT_TRAFFIC_ACL  R4(config-crypto-map)#set transform-set TRANS_SET  R4(config-crypto-map)#end  Step 6: Apply the crypto map to the external interface.  R4(config)#int g0/2  R4(config-if)#crypto map IPSEC_MGMT_MAP",
     cci: "CCI-001097",
     expectedState: "Ensure that a dedicated circuit, MPLS/VPN service, or IPsec tunnel is deployed to transport management traffic between the managed network and the NOC.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

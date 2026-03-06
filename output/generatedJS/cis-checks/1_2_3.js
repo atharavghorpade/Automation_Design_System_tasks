@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Disable the EXEC process on the auxiliary port. hostname(config)#line aux 0 hostname(config-line)#no exec",
     defaultValue: "",
     expectedState: "Disable the EXEC process on the auxiliary port.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

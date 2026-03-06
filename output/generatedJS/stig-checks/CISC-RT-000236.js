@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.16",
     stigId: "CISC-RT-000236",
-    ruleId: "RULE ID: SV-230038r531386",
-    groupId: "GROUP ID: V-230038",
+    ruleId: "SV-230038r531386",
+    groupId: "V-230038",
     severity: "HIGH",
     description: "The Cisco router must be configured to advertise a hop limit of at least 32 in Router  Advertisement messages for IPv6 stateless auto-configuration deployments.  GROUP ID: V-230038  RULE ID: SV-230038r531386",
     rationale: "The Neighbor Discovery protocol allows a hop limit value to be advertised by routers in  a Router Advertisement message being used by hosts instead of the standardized  default value. If a very small value was configured and advertised to hosts on the LAN  segment, communications would fail due to the hop limit reaching zero before the  packets sent by a host reached its destination.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to advertise a hop limit of at least 32 in Router Advertisement  messages.  R1(config)#ipv6 hop-limit 128",
     cci: "CCI-000366",
     expectedState: "Configure the router to advertise a hop limit of at least 32 in Router Advertisement messages.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

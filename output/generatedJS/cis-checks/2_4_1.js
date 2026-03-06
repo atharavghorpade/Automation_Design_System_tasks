@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Define and configure one loopback interface. hostname(config)#interface loopback <<em>number</em>> hostname(config-if)#ip address <<em>loopback_ip_address</em>> <<em>loopback_subnet_mask</em>>",
     defaultValue: "There are no loopback interfaces defined by default.",
     expectedState: "There are no loopback interfaces defined by default.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

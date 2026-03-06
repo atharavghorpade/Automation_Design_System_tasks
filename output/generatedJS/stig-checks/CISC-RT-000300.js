@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.24",
     stigId: "CISC-RT-000300",
-    ruleId: "RULE ID: SV-216578r531085",
-    groupId: "GROUP ID: V-216578",
+    ruleId: "SV-216578r531085",
+    groupId: "V-216578",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to not redistribute static routes to an  alternate gateway service provider into BGP or an IGP peering with the NIPRNet or to  other autonomous systems.  GROUP ID: V-216578  RULE ID: SV-216578r531085",
     rationale: "If the static routes to the alternate gateway are being redistributed into an Exterior  Gateway Protocol or Interior Gateway Protocol to a NIPRNet gateway, this could make  traffic on NIPRNet flow to that particular router and not to the Internet Access Point  routers. This could not only wreak havoc with traffic flows on NIPRNet, but it could  overwhelm the connection from the router to the NIPRNet gateway(s) and also cause  traffic destined for outside of NIPRNet to bypass the defenses of the Internet Access  Points.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Configure the router so that static routes are not redistributed to an alternate gateway  into either a BGP or any IGP peering with the NIPRNet or to any other autonomous  systems. This can be done by excluding that route in the route-map as shown in the  example below.  Step 1: Configure a prefix list for any static routes with the alternate gateway as the  next-hop address  R5(config)#ip prefix-list ISP_PREFIX permit x.x.x.0/24  Step 2: Configure a route map that will deny the state routes to the ISP  R5(config)#route-map FILTER_ISP_STATIC deny 10  R5(config-route-map)#match ip address prefix-list ISP_PREFIX  R5(config-route-map)#exit  R5(config)#route-map FILTER_ISP_STATIC permit 20  R5(config-route-map)#exit  Step 3: Apply the route-map to the IGP and BGP redistribute static commands as  shown in the EIGRP example.  R5(config)#router eigrp 1  R5(config-router)#redistribute static route-map FILTER_ISP_STATIC",
     cci: "CCI-001414",
     expectedState: "Configure the router so that static routes are not redistributed to an alternate gateway into either a BGP or any IGP peering with the NIPRNet or to any other autonomous systems.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

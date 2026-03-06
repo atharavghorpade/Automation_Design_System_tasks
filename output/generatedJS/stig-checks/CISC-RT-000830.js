@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.80",
     stigId: "CISC-RT-000830",
-    ruleId: "RULE ID: SV-216626r531085",
-    groupId: "GROUP ID: V-216626",
+    ruleId: "SV-216626r531085",
+    groupId: "V-216626",
     severity: "HIGH",
     description: "The Cisco multicast Rendezvous Point (RP) router must be configured to filter Protocol  Independent Multicast (PIM) Register messages received from the Designated Router  (DR) for any undesirable multicast groups and sources.  GROUP ID: V-216626  RULE ID: SV-216626r531085",
     rationale: "Real-time multicast traffic can entail multiple large flows of data. An attacker can flood a  network segment with multicast packets, over-using the available bandwidth and  thereby creating a denial-of-service (DoS) condition. Hence, it is imperative that register  messages are accepted only for authorized multicast groups and sources.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to filter PIM register messages received from a multicast DR for  any undesirable multicast groups and sources. The example below will deny any  multicast streams for groups 239.5.0.0/16 and allow from only sources 10.1.2.6 and  10.1.2.7.  R2(config)#ip access-list extended PIM_REGISTER_FILTER  R2(config-ext-nacl)#deny ip any 239.5.0.0 0.0.255.255  R2(config-ext-nacl)#permit ip host 10.1.2.6 any  R2(config-ext-nacl)#permit ip host 10.1.2.7 any  R2(config-ext-nacl)#deny ip any any  R2(config-ext-nacl)#exit  R2(config)#ip pim accept-register list PIM_REGISTER_FILTER  R2(config)#end",
     cci: "CCI-001414",
     expectedState: "Configure the router to filter PIM register messages received from a multicast DR for any undesirable multicast groups and sources.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

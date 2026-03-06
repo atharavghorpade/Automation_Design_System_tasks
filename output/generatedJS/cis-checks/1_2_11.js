@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure device timeout (10 minutes or less) to disconnect sessions after a fixed idle time. ip http timeout-policy idle 600 life {nnnn} requests {nn}",
     defaultValue: "disabled Page 56",
     expectedState: "disabled Page 56",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure management lines to require login using the default or a named AAA authentication list. This configuration must be set individually for all line types. hostname#(config)ip http secure-server hostname#(config)ip http authentication {default | _aaa\_list\_name_}",
     defaultValue: "Login authentication is not enabled. Uses the default set with aaa authentication login.",
     expectedState: "Uses the default set with aaa authentication login.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

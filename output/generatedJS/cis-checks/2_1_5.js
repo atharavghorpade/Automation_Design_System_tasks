@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Disable the ident server. hostname(config)#no ip identd",
     defaultValue: "Disabled by default",
     expectedState: "Disabled by default",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

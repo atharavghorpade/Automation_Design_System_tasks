@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure at least one external NTP Server using the following commands hostname(config)#ntp server {ntp-server_ip_address} or hostname(config)#ntp server {ntp server vrf [vrf name] ip address}",
     defaultValue: "No servers are configured by default.",
     expectedState: "No servers are configured by default.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

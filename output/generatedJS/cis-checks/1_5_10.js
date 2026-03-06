@@ -9,7 +9,7 @@ var metadata = {
     remediation: "For each SNMPv3 user created on your router add privacy options by issuing the following command. hostname(config)#snmp-server user {user_name} {group_name} v3 auth sha {auth_password} priv aes 128 {priv_password} {acl_name_or_number}",
     defaultValue: "SNMP username as not set by default.",
     expectedState: "SNMP username as not set by default.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

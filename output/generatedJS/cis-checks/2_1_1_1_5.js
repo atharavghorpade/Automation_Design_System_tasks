@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the SSH timeout: 3 or less hostname(config)#ip ssh authentication-retries [<em>3</em>]",
     defaultValue: "SSH is not enabled by default. When set, the default value is 3.",
     expectedState: "When set, the default value is 3.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure buffered logging (with minimum size). Recommended size is 64000. hostname(config)#logging buffered [<em>log_buffer_size</em>]",
     defaultValue: "No logging buffer is set by default",
     expectedState: "No logging buffer is set by default",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

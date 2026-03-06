@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.67",
     stigId: "CISC-RT-000650",
-    ruleId: "RULE ID: SV-216613r531085",
-    groupId: "GROUP ID: V-216613",
+    ruleId: "SV-216613r531085",
+    groupId: "V-216613",
     severity: "HIGH",
     description: "The Cisco PE router must be configured to have each VRF with the appropriate Route  Distinguisher (RD).  GROUP ID: V-216613  RULE ID: SV-216613r531085",
     rationale: "An RD provides uniqueness to the customer address spaces within the MPLS L3VPN  infrastructure. The concept of the VPN-IPv4 and VPN-IPv6 address families consists of  the RD prepended before the IP address. Hence, if the same IP prefix is used in several  different L3VPNs, it is possible for BGP to carry several completely different routes for  that prefix, one for each VPN.  Since VPN-IPv4 addresses and IPv4 addresses are different address families, BGP  never treats them as comparable addresses. The purpose of the RD is to create distinct  routes for common IPv4 address prefixes. On any given PE router, a single RD can  define a VRF in which the entire address space may be used independently, regardless  of the makeup of other VPN address spaces. Hence, it is imperative that a unique RD is  assigned to each L3VPN and that the proper RD is configured for each VRF.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the correct RD for each VRF.  R5(config)#ip vrf CUST1  R5(config-vrf)#rd 13:13  R5(config-vrf)#end     Internal Only - General",
     cci: "CCI-000366",
     expectedState: "Configure the correct RD for each VRF.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

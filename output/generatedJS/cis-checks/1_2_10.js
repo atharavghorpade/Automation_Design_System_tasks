@@ -9,7 +9,7 @@ var metadata = {
     remediation: "hostname(config)#ip http max-connections 2",
     defaultValue: "",
     expectedState: "hostname(config)#ip http max-connections 2",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

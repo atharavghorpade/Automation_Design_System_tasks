@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Enable password encryption service to protect sensitive access passwords in the device configuration. hostname(config)#service password-encryption",
     defaultValue: "Service password encryption is not set by default",
     expectedState: "Service password encryption is not set by default",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

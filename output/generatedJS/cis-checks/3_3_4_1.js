@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure BGP neighbor authentication where feasible. hostname(config)#router bgp <<em>bgp_as-number</em>> hostname(config-router)#neighbor <<em>bgp_neighbor-ip</em> | <em>peer-group- name</em>> password <<em>password</em>>",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

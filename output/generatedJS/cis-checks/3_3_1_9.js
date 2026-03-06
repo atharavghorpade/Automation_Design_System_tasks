@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the interface with the EIGRP authentication mode. hostname(config)#interface {<em>interface_name</em>} hostname(config-if)#ip authentication mode eigrp {<em><span>eigrp_as- number</span></em><span>}</span> md5",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

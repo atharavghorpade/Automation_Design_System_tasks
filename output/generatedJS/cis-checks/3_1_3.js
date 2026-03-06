@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Remove any tunnel interfaces. hostname(config)#no interface tunnel {<em>instance</em>}",
     defaultValue: "No tunnel interfaces are defined",
     expectedState: "No tunnel interfaces are defined",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

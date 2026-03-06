@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure AAA authentication method(s) for login authentication. hostname(config)#aaa authentication login {default | aaa_list_name} [passwd- expiry] [method1] [method2]",
     defaultValue: "AAA authentication at login is disabled.",
     expectedState: "AAA authentication at login is disabled.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

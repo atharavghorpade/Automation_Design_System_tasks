@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.29",
     stigId: "CISC-RT-000350",
-    ruleId: "RULE ID: SV-216990r856207",
-    groupId: "GROUP ID: V-216990",
+    ruleId: "SV-216990r856207",
+    groupId: "V-216990",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to block all packets with any IP options.  GROUP ID: V-216990  RULE ID: SV-216990r856207",
     rationale: "Packets with IP options are not fast switched and henceforth must be punted to the  router processor. Hackers who initiate denial-of-service (DoS) attacks on routers  commonly send large streams of packets with IP options. Dropping the packets with IP  options reduces the load of IP options packets on the router. The end result is a  reduction in the effects of the DoS attack on the router and on downstream routers.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Configure the router to drop all packets with IP options.  R1(config)#ip access-list extended EXTERNAL_ACL  R1(config-ext-nacl)#15 deny ip any any option any-options",
     cci: "CCI-002403",
     expectedState: "Configure the router to drop all packets with IP options.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

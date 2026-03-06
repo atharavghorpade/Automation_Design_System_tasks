@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.36",
     stigId: "CISC-RT-000393",
-    ruleId: "RULE ID: SV-230050r856665",
-    groupId: "GROUP ID: V-230050",
+    ruleId: "SV-230050r856665",
+    groupId: "V-230050",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured drop IPv6 packets with a Routing  Header type 0, 1, or 3–255.  GROUP ID: V-230050  RULE ID: SV-230050r856665",
     rationale: "The routing header can be used maliciously to send a packet through a path where less  robust security is in place, rather than through the presumably preferred path of routing  protocols. Use of the routing extension header has few legitimate uses other than as  implemented by Mobile IPv6.  The Type 0 Routing Header (RFC 5095) is dangerous because it allows attackers to  spoof source addresses and obtain traffic in response, rather than the real owner of the  address. Secondly, a packet with an allowed destination address could be sent through  a Firewall using the Routing Header functionality, only to bounce to a different node  once inside. The Type 1 Routing Header is defined by a specification called \"Nimrod  Routing\", a discontinued project funded by DARPA. Assuming that most  implementations will not recognize the Type 1 Routing Header, it must be dropped. The  Type 3–255 Routing Header values in the routing type field are currently undefined and  should be dropped inbound and outbound.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to drop IPv6 packets with Routing Header of type 0, 1, or 3-255 as  shown in the example below.  R1(config)#ipv6 access-list FILTER_IPV6  R1(config-ipv6-acl)#permit ipv6 any host 2001:DB8::0:1:1:1234 routing-type 2  R1(config-ipv6-acl)#deny ipv6 any any routing log  R1(config-ipv6-acl)#permit …  …  …  …  R1(config-ipv6-acl)#deny ipv6 any any log  R1(config-ipv6-acl)#exit  R1(config)#int g1/0  R1(config-if)#ipv6 traffic-filter FILTER_IPV6",
     cci: "CCI-002403",
     expectedState: "Configure the router to drop IPv6 packets with Routing Header of type 0, 1, or 3-255 as shown in the example below.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

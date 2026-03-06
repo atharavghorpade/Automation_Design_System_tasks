@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Generate an RSA key pair for the router. hostname(config)#crypto key generate rsa general-keys modulus <em>2048</em>",
     defaultValue: "RSA key pairs do not exist.",
     expectedState: "RSA key pairs do not exist.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

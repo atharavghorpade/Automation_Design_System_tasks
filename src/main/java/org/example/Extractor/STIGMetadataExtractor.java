@@ -49,7 +49,8 @@ public class STIGMetadataExtractor {
                 meta.setRuleId(extract(block, "RULE ID:\\s*(SV-\\d+r\\d+)"));
 
                 // Correct severity extraction
-                meta.setSeverity(extract(block, "SEVERITY:\\s*(CAT\\s+(?:I|II|III))"));
+                String severity = extract(block, "SEVERITY:\\s*(CAT\\s+(?:I|II|III))");
+                meta.setSeverity(mapSeverity(severity));
 
                 meta.setCci(extractAll(block, "CCI-\\d+"));
 
@@ -72,7 +73,15 @@ public class STIGMetadataExtractor {
     private String extract(String text, String regex) {
         Matcher m = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE)
                 .matcher(text);
-        return m.find() ? m.group().trim() : null;
+
+        if (m.find()) {
+            if (m.groupCount() >= 1) {
+                return m.group(1).trim(); // return captured value only
+            }
+            return m.group().trim();
+        }
+
+        return null;
     }
 
     // For multiple CCI values
@@ -101,6 +110,27 @@ public class STIGMetadataExtractor {
 
         return m.find() ? m.group(1).trim() : null;
     }
+    private String mapSeverity(String severity) {
+
+        if (severity == null) return null;
+
+        severity = severity.toUpperCase().trim();
+
+        switch (severity) {
+            case "CAT I":
+                return "High";
+
+            case "CAT II":
+                return "Medium";
+
+            case "CAT III":
+                return "Low";
+
+            default:
+                return severity;
+        }
+    }
+
 
     // Heuristic inference for expected state (similar to CISMetadataExtractor)
     private String inferExpectedStateForSTIG(STIG_Benchmark b) {

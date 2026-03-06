@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.62",
     stigId: "CISC-RT-000600",
-    ruleId: "RULE ID: SV-216608r531085",
-    groupId: "GROUP ID: V-216608",
+    ruleId: "SV-216608r531085",
+    groupId: "V-216608",
     severity: "HIGH",
     description: "The Cisco MPLS router must be configured to synchronize IGP and LDP to minimize  packet loss when an IGP adjacency is established prior to LDP peers completing label  exchange.  GROUP ID: V-216608  RULE ID: SV-216608r531085",
     rationale: "Packet loss can occur when an IGP adjacency is established and the router begins  forwarding packets using the new adjacency before the LDP label exchange completes  between the peers on that link. Packet loss can also occur if an LDP session closes and  the router continues to forward traffic using the link associated with the LDP peer rather  than an alternate pathway with a fully synchronized LDP session. The MPLS LDP-IGP  Synchronization feature provides a means to synchronize LDP with OSPF or IS-IS to  minimize MPLS packet loss. When an IGP adjacency is established on a link but LDP- IGP synchronization is not yet achieved or is lost, the IGP will advertise the max-metric  on that link.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the MPLS router to synchronize IGP and LDP, minimizing packet loss when  an IGP adjacency is established prior to LDP peers completing label exchange.  OSPF Example  R2(config)#router ospf 1  R2(config-router)#mpls ldp sync  IS-IS Example  R5(config)#router isis  R5(config-router)#mpls ldp sync",
     cci: "CCI-000366",
     expectedState: "Configure the MPLS router to synchronize IGP and LDP, minimizing packet loss when an IGP adjacency is established prior to LDP peers completing label exchange.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

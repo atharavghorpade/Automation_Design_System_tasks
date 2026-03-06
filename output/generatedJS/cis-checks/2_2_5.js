@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure SNMP trap and syslog logging level. hostname(config)#logging trap informational",
     defaultValue: "Disabled",
     expectedState: "Disabled",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

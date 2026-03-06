@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.58",
     stigId: "CISC-RT-000570",
-    ruleId: "RULE ID: SV-216605r856193",
-    groupId: "GROUP ID: V-216605",
+    ruleId: "SV-216605r856193",
+    groupId: "V-216605",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to limit the prefix size on any inbound route  advertisement to /24 or the least significant prefixes issued to the customer.  GROUP ID: V-216605  RULE ID: SV-216605r856193",
     rationale: "The effects of prefix de-aggregation can degrade router performance due to the size of  routing tables and also result in black-holing legitimate traffic. Initiated by an attacker or  a misconfigured router, prefix de-aggregation occurs when the announcement of a large  prefix is fragmented into a collection of smaller prefix announcements.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Configure the router to limit the prefix size on any route advertisement to /24 or the least  significant prefixes issued to the customer.  Step 1: Configure a prefix list to reject any prefix that is longer than /24.  R1(config)#ip prefix-list FILTER_PREFIX_LENGTH permit 0.0.0.0/0 ge 8 le 24  R1(config)#ip prefix-list FILTER_PREFIX_LENGTH deny 0.0.0.0/0 le 32  Step 2: Apply the prefix list to all eBGP peers as shown in the example below.  R1(config)#router bgp xx  R1(config-router)#neighbor x.1.1.9 prefix-list FILTER_PREFIX_LENGTH in  R1(config-router)#neighbor x.2.1.7 prefix-list FILTER_PREFIX_LENGTH in",
     cci: "CCI-002385",
     expectedState: "Configure the router to limit the prefix size on any route advertisement to /24 or the least significant prefixes issued to the customer.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

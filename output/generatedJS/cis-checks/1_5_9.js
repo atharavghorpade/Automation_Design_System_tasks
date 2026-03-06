@@ -9,7 +9,7 @@ var metadata = {
     remediation: "For each SNMPv3 group created on your router add privacy options by issuing the following command... hostname(config)#snmp-server group {<em>group_name</em>} v3 priv",
     defaultValue: "No SNMP server groups are configured.",
     expectedState: "No SNMP server groups are configured.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

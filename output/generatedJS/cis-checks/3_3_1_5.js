@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the EIGRP address family. hostname(config)#router eigrp <<em>virtual-instance-name</em>> hostname(config-router)#address-family ipv4 autonomous-system {<em>eigrp_as- number</em>} hostname(config-router-af)#af-interface default",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

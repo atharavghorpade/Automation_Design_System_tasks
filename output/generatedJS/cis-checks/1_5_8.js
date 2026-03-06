@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Enable SNMP traps. hostname(config)#snmp-server enable traps snmp authentication linkup linkdown coldstart",
     defaultValue: "SNMP notifications are disabled.",
     expectedState: "SNMP notifications are disabled.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

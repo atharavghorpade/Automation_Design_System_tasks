@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.13",
     stigId: "CISC-RT-000220",
-    ruleId: "RULE ID: SV-216570r531085",
-    groupId: "GROUP ID: V-216570",
+    ruleId: "SV-216570r531085",
+    groupId: "V-216570",
     severity: "HIGH",
     description: "The Cisco router must be configured to produce audit records containing information to  establish the source of the events.  GROUP ID: V-216570  RULE ID: SV-216570r531085",
     rationale: "Without establishing the source of the event, it is impossible to establish, correlate, and  investigate the events leading up to an outage or attack.  In order to compile an accurate risk assessment and provide forensic analysis, security  personnel need to know the source of the event.  In addition to logging where events occur within the network, the audit records must  also identify sources of events such as IP addresses, processes, and node or device  names.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to log events containing information to establish where the events  occurred as shown in the example below.  R5(config)#ip access-list extended INGRESS_FILTER  …  …  …  R5(config-ext-nacl)#deny ip any any log-input",
     cci: "CCI-000133",
     expectedState: "Configure the router to log events containing information to establish where the events occurred as shown in the example below.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

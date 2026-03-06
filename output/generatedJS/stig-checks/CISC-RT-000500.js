@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.52",
     stigId: "CISC-RT-000500",
-    ruleId: "RULE ID: SV-216598r531085",
-    groupId: "GROUP ID: V-216598",
+    ruleId: "SV-216598r531085",
+    groupId: "V-216598",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject inbound route advertisements for  any prefixes belonging to the local autonomous system (AS).  GROUP ID: V-216598  RULE ID: SV-216598r531085",
     rationale: "Accepting route advertisements belonging to the local AS can result in traffic looping or  being black holed, or at a minimum using a non-optimized path.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to reject inbound route advertisements for any prefixes belonging  to the local AS.  Step 1: Add to the prefix filter list those prefixes belonging to the local autonomous  system.  R1(config)#ip prefix-list PREFIX_FILTER seq 74 deny x.13.1.0/24 le 32  Step 2: If not already completed to be compliant with previous requirement, apply the  prefix list filter inbound to each external BGP neighbor as shown in the example.  R1(config)#router bgp xx  R1(config-router)#neighbor x.1.1.9 prefix-list PREFIX_FILTER in  R1(config-router)#neighbor x.2.1.7 prefix-list PREFIX_FILTER in",
     cci: "CCI-001368",
     expectedState: "Configure the router to reject inbound route advertisements for any prefixes belonging to the local AS.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

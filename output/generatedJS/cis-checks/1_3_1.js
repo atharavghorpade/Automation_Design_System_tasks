@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the EXEC banner presented to a user when accessing the devices enable prompt. hostname(config)#banner exec c Enter TEXT message. End with the character 'c'. <banner-text> c",
     defaultValue: "No banner is set by default",
     expectedState: "No banner is set by default",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

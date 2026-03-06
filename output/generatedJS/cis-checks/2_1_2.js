@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Disable Cisco Discovery Protocol (CDP) service globally. hostname(config)#no cdp run",
     defaultValue: "Enabled on all platforms except the Cisco 10000 Series Edge Services Router",
     expectedState: "Enabled on all platforms except the Cisco 10000 Series Edge Services Router",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.46",
     stigId: "CISC-RT-000440",
-    ruleId: "RULE ID: SV-216592r531085",
-    groupId: "GROUP ID: V-216592",
+    ruleId: "SV-216592r531085",
+    groupId: "V-216592",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  block any traffic destined to itself that is not sourced from the OOBM network or the  Network Operations Center (NOC).  GROUP ID: V-216592  RULE ID: SV-216592r531085",
     rationale: "If the gateway router is not a dedicated device for the OOBM network, several  safeguards must be implemented for containment of management and production traffic  boundaries. It is imperative that hosts from the managed network are not able to access  the OOBM gateway router.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone. It is only applicable if the  OOBM gateway router is not a dedicated device to the OOBM backbone.  Step 1: Configure the ACL to only allow traffic to the route processor from the OOBM  backbone and the NOC.  R4(config)#ip access-list extended TRAFFIC_FROM_NOC  R4(config-ext-nacl)#permit ip 10.11.1.0 0.255.255.255 host 10.11.1.8  R4(config-ext-nacl)#permit ip 10.12.1.0 0.255.255.255 host 10.11.1.8  R4(config-ext-nacl)#permit ip 10.11.1.0 0.255.255.255 host 10.13.1.1  R4(config-ext-nacl)#permit ip 10.12.1.0 0.255.255.255 host 10.13.1.1  R4(config-ext-nacl)#deny ip any host 10.11.1.8 log-input  R4(config-ext-nacl)#deny ip any host 10.13.1.1 log-input  R4(config-ext-nacl)#permit ip 10.11.1.0 0.0.0.255 10.13.1.0 0.0.0.255  R4(config-ext-nacl)#permit ip 10.12.1.0 0.0.0.255 10.13.1.0 0.0.0.255  R4(config-ext-nacl)#deny ip any any log-input  Step 2: Configure the ACL to only allow traffic to the route processor from the OOBM  LAN.  R4(config)#ip access-list extended TRAFFIC_TO_NOC  R4(config-ext-nacl)#permit ip 10.13.1.0 0.255.255.255 host 10.13.1.1  R4(config-ext-nacl)#permit ip 10.13.1.0 0.255.255.255 host 10.11.1.8  R4(config-ext-nacl)#deny ip any host 10.13.1.1 log-input  R4(config-ext-nacl)#deny ip any host 10.11.1.8 log-input  R4(config-ext-nacl)#permit ip 10.13.1.0 0.255.255.255 10.11.1.0 0.0.0.255  R4(config-ext-nacl)#permit ip 10.13.1.0 0.255.255.255 10.12.1.0 0.0.0.255  R4(config-ext-nacl)#deny ip any any log-input  R4(config-ext-nacl)#exit  Step 3: Apply the ACLs configured above to the appropriate OOBM interfaces as shown  in the example below.  R4(config)#int g0/2  R4(config-if)#ip access-group TRAFFIC_FROM_NOC in  R4(config)#int g0/3  R4(config-if)#ip access-group TRAFFIC_TO_NOC in  R4(config-if)#end",
     cci: "CCI-001097",
     expectedState: "Step 1: Configure the ACL to only allow traffic to the route processor from the OOBM backbone and the NOC.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

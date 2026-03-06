@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.12",
     stigId: "CISC-RT-000210",
-    ruleId: "RULE ID: SV-216569r531085",
-    groupId: "GROUP ID: V-216569",
+    ruleId: "SV-216569r531085",
+    groupId: "V-216569",
     severity: "HIGH",
     description: "The Cisco router must be configured to produce audit records containing information to  establish where the events occurred.  GROUP ID: V-216569  RULE ID: SV-216569r531085",
     rationale: "Without establishing where events occurred, it is impossible to establish, correlate, and  investigate the events leading up to an outage or attack.  In order to compile an accurate risk assessment and provide forensic analysis, it is  essential for security personnel to know where events occurred, such as router  components, modules, device identifiers, node names, and functionality.  Associating information about where the event occurred within the network provides a  means of investigating an attack, recognizing resource utilization or capacity thresholds,  or identifying an improperly configured router.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to log events containing information to establish where the events  occurred as shown in the example below.  R5(config)#ip access-list extended INGRESS_FILTER  …  …  …  R5(config-ext-nacl)#deny ip any any log-input",
     cci: "CCI-000132",
     expectedState: "Configure the router to log events containing information to establish where the events occurred as shown in the example below.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

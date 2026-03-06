@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the webauth banner presented when a user connects to the device. hostname(config)#ip admission auth-proxy-banner http {banner-text | filepath}",
     defaultValue: "No banner is set by default",
     expectedState: "No banner is set by default",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

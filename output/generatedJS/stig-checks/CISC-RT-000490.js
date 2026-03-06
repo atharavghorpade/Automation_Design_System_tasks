@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.51",
     stigId: "CISC-RT-000490",
-    ruleId: "RULE ID: SV-216597r877976",
-    groupId: "GROUP ID: V-216597",
+    ruleId: "SV-216597r877976",
+    groupId: "V-216597",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject inbound route advertisements for  any Bogon prefixes.  GROUP ID: V-216597  RULE ID: SV-216597r877976",
     rationale: "Accepting route advertisements for Bogon prefixes can result in the local autonomous  system (AS) becoming a transit for malicious traffic as it will in turn advertise these  prefixes to neighbor autonomous systems.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the router to reject inbound route advertisements for any Bogon prefixes.  Step 1: Configure a prefix list containing the current Bogon prefixes as shown below.  R1(config)#ip prefix-list PREFIX_FILTER deny 0.0.0.0/8 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 10.0.0.0/8 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 100.64.0.0/10 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 127.0.0.0/8 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 169.254.0.0/16 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 172.16.0.0/12 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 192.0.2.0/24 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 192.88.99.0/24 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 192.168.0.0/16 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 198.18.0.0/15 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 198.51.100.0/24 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 203.0.113.0/24 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 224.0.0.0/4 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 240.0.0.0/4 le 32  R1(config)#ip prefix-list PREFIX_FILTER deny 240.0.0.0/4 le 32  R1(config)#ip prefix-list PREFIX_FILTER permit 0.0.0.0/0 ge 8  Step 2: Apply the prefix list filter inbound to each external BGP neighbor as shown in  the example.  R1(config)#router bgp xx  R1(config-router)#neighbor x.1.1.9 prefix-list PREFIX_FILTER in  R1(config-router)#neighbor x.2.1.7 prefix-list PREFIX_FILTER in  Route Map Alternative  Step 1: Configure the route map referencing the configured prefix list above.  R1(config)#route-map FILTER_PREFIX_MAP 10  R1(config-route-map)#match ip address prefix-list PREFIX_FILTER  R1(config-route-map)#exit  Step 2: Apply the route-map inbound to each external BGP neighbor as shown in the  example.  R1(config)#router bgp xx  R1(config-router)#neighbor x.1.1.9 route-map FILTER_PREFIX_MAP in  R1(config-router)#neighbor x.2.1.7 route-map FILTER_PREFIX_MAP in  R1(config-router)#end",
     cci: "CCI-001368",
     expectedState: "Configure the router to reject inbound route advertisements for any Bogon prefixes.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

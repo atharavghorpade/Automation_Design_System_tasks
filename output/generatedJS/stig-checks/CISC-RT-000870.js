@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.84",
     stigId: "CISC-RT-000870",
-    ruleId: "RULE ID: SV-216630r864158",
-    groupId: "GROUP ID: V-216630",
+    ruleId: "SV-216630r864158",
+    groupId: "V-216630",
     severity: "HIGH",
     description: "The Cisco multicast Designated Router (DR) must be configured to filter the Internet  Group Management Protocol (IGMP) and Multicast Listener Discovery (MLD) Report  messages to allow hosts to join a multicast group only from sources that have been  approved by the organization.  GROUP ID: V-216630  RULE ID: SV-216630r864158",
     rationale: "Real-time multicast traffic can entail multiple large flows of data. Large unicast flows  tend to be fairly isolated (i.e., someone doing a file download here or there), whereas  multicast can have broader impact on bandwidth consumption, resulting in extreme  network congestion. Hence, it is imperative that there is multicast admission control to  restrict which multicast groups hosts are allowed to join via IGMP or MLD.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "Configure the DR to filter the IGMP and MLD report messages to allow hosts to join only  those multicast groups from sources that have been approved as shown in the example.  R3(config)#ip access-list extended IGMP_JOIN_FILTER  R3(config-ext-nacl)#deny ip any 232.8.0.0 0.0.255.255  R3(config-ext-nacl)#permit ip x.0.0.0 0.255.255.255 any  R3(config-ext-nacl)#deny ip any any  R3(config-ext-nacl)#exit  Step 2: Apply the filter to all host facing interfaces.  R3(config)#int g0/0  R3(config-if)#ip igmp access-group IGMP_JOIN_FILTER",
     cci: "CCI-002403",
     expectedState: "Configure the DR to filter the IGMP and MLD report messages to allow hosts to join only those multicast groups from sources that have been approved as shown in the example.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

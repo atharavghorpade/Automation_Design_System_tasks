@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the key string. hostname(config-keychain-key)#key-string <<em>key-string</em>>",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.48",
     stigId: "CISC-RT-000460",
-    ruleId: "RULE ID: SV-216594r531085",
-    groupId: "GROUP ID: V-216594",
+    ruleId: "SV-216594r531085",
+    groupId: "V-216594",
     severity: "HIGH",
     description: "The Cisco router providing connectivity to the Network Operations Center (NOC) must  be configured to forward all in-band management traffic via an IPsec tunnel.  GROUP ID: V-216594  RULE ID: SV-216594r531085",
     rationale: "When the production network is managed in-band, the management network could be  housed at a NOC that is located remotely at single or multiple interconnected sites.  NOC interconnectivity, as well as connectivity between the NOC and the managed  network, must be enabled using IPsec tunnels to provide the separation and integrity of  the managed traffic.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Ensure that all traffic from the managed network to the management network is secured  via IPsec tunnel as shown in the configuration examples below.  Step 1: Configure the ACL for the management network as the destination. This ACL  will be defined in the crypto as the interesting traffic to be forwarded into the IPsec  tunnel.  R4(config)#ip access-list extended MGMT_TRAFFIC_ACL  R4(config-ext-nacl)#permit ip 10.1.34.0 0.0.0.255 10.22.2.0 0.0.0.255  R4(config-ext-nacl)#exit  Step 2: Create an ISAKMP policy for Phase 1 negotiations  R4(config)#crypto isakmp policy 10  R4(config-isakmp)#hash sha256  R4(config-isakmp)#authentication pre-share  R4(config-isakmp)#exit  Step 3: Specify the pre-shared key and the remote peer address  R4(config)#crypto isakmp key 0 xxxxxx address 10.1.12.1  Note: Digital certificates can be utilized as an alternative.  Step 4: Create the Phase 2 policy for the data encryption  R4(config)#crypto ipsec transform-set TRANS_SET ah-sha256-hmac esp-aes  R4(cfg-crypto-trans)#mode tunnel  R4(cfg-crypto-trans)#exit  Step 5: Create the crypto map  R4(config)#crypto map IPSEC_MGMT_MAP 10 ipsec-isakmp  R4(config-crypto-map)#set peer 10.1.12.1  R4(config-crypto-map)#match address MGMT_TRAFFIC_ACL  R4(config-crypto-map)#set transform-set TRANS_SET  R4(config-crypto-map)#end  Step 6: Apply the crypto map to the external interface  R4(config)#int g0/2  R4(config-if)#crypto map IPSEC_MGMT_MAP",
     cci: "CCI-001097",
     expectedState: "Ensure that all traffic from the managed network to the management network is secured via IPsec tunnel as shown in the configuration examples below.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

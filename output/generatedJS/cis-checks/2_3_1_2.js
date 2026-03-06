@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure at the NTP key ring and encryption key using the following command hostname(config)#ntp authentication-key {ntp_key_id} md5 {ntp_key_hash}",
     defaultValue: "No authentication key is defined for NTP.",
     expectedState: "No authentication key is defined for NTP.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

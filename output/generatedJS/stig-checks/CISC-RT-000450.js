@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.47",
     stigId: "CISC-RT-000450",
-    ruleId: "RULE ID: SV-216593r531085",
-    groupId: "GROUP ID: V-216593",
+    ruleId: "SV-216593r531085",
+    groupId: "V-216593",
     severity: "HIGH",
     description: "The Cisco router must be configured to only permit management traffic that ingresses  and egresses the out-of-band management (OOBM) interface.  GROUP ID: V-216593  RULE ID: SV-216593r531085",
     rationale: "The OOBM access switch will connect to the management interface of the managed  network elements. The management interface can be a true OOBM interface or a  standard interface functioning as the management interface. In either case, the  management interface of the managed network element will be directly connected to the  OOBM network.  An OOBM interface does not forward transit traffic, thereby providing complete  separation of production and management traffic. Since all management traffic is  immediately forwarded into the management network, it is not exposed to possible  tampering. The separation also ensures that congestion or failures in the managed  network do not affect the management of the device. If the device does not have an  OOBM port, the interface functioning as the management interface must be configured  so that management traffic does not leak into the managed network and that production  traffic does not leak into the management network.  Internal Only - General",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "If the management interface is not a dedicated OOBM interface, it must be configured  with both an ingress and egress ACL.  Step 1: Configure an ingress ACL a shown in the example below.  R5(config)#ip access-list extended INGRESS_MANAGEMENT_ACL  R5(config-ext-nacl)#permit tcp any host 10.11.1.22 eq tacacs  R5(config-ext-nacl)#permit tcp any host 10.11.1.22 eq 22  R5(config-ext-nacl)#permit udp any host 10.11.1.22 eq snmp  R5(config-ext-nacl)#permit udp any host 10.11.1.22 eq snmptrap  R5(config-ext-nacl)#permit udp any host 10.11.1.22 eq ntp  R5(config-ext-nacl)#permit icmp any host 10.11.1.22  R5(config-ext-nacl)#deny ip any any log-input  R5(config-ext-nacl)#exit  Step 2: Configure an egress ACL a shown in the example below.  R5(config)#ip access-list extended EGRESS_MANAGEMENT_ACL  R5(config-ext-nacl)#deny ip any any log-input  R5(config-ext-nacl)#exit  Step 3: Apply the ACLs to the OOBM interfaces.  R4(config)#int g0/7  R4(config-if)#ip access-group INGRESS_MANAGEMENT_ACL in  R4(config-if)#ip access-group EGRESS_MANAGEMENT_ACL out",
     cci: "CCI-001097",
     expectedState: "If the management interface is not a dedicated OOBM interface, it must be configured with both an ingress and egress ACL.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

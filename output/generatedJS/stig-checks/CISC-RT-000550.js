@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.57",
     stigId: "CISC-RT-000550",
-    ruleId: "RULE ID: SV-216603r531085",
-    groupId: "GROUP ID: V-216603",
+    ruleId: "SV-216603r531085",
+    groupId: "V-216603",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject route advertisements from CE  routers with an originating AS in the AS_PATH attribute that does not belong to that  customer.  GROUP ID: V-216603  RULE ID: SV-216603r531085",
     rationale: "Verifying the path a route has traversed will ensure that the local AS is not used as a  transit network for unauthorized traffic. To ensure that the local AS does not carry any  prefixes that do not belong to any customers, all PE routers must be configured to reject  routes with an originating AS other than that belonging to the customer.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "This requirement is not applicable for the DODIN Backbone.  Configure the router to reject updates from CE routers with an originating AS in the  AS_PATH attribute that does not belong to that customer.  Step 1: Configure the as-path ACL as shown in the example below:  R1(config)#ip as-path access-list 10 permit ^yy$  R1(config)#ip as-path access-list 10 deny .*  Step 2: Apply the as-path filter inbound as shown in the example below:  R1(config)#router bgp xx  R1(config-router)#neighbor x.1.4.12 filter-list 10 in",
     cci: "CCI-000032",
     expectedState: "Configure the router to reject updates from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

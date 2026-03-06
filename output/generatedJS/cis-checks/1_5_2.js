@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Disable the default SNMP community string private hostname(config)#no snmp-server community {private}",
     defaultValue: "",
     expectedState: "Disable the default SNMP community string private hostname(config)#no snmp-server community {private}",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

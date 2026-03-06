@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the Message Digest option for OSPF. hostname(config)#router ospf <<em>ospf_process-id</em>> hostname(config-router)#area <<em>ospf_area-id</em>> authentication message- digest",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

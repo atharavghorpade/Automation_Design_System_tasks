@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.79",
     stigId: "CISC-RT-000820",
-    ruleId: "RULE ID: SV-216625r864156",
-    groupId: "GROUP ID: V-216625",
+    ruleId: "SV-216625r864156",
+    groupId: "V-216625",
     severity: "HIGH",
     description: "The Cisco multicast Rendezvous Point (RP) router must be configured to limit the  multicast forwarding cache so that its resources are not saturated by managing an  overwhelming number of Protocol Independent Multicast (PIM) and Multicast Source  Discovery Protocol (MSDP) source-active entries.  GROUP ID: V-216625  RULE ID: SV-216625r864156",
     rationale: "MSDP peering between networks enables sharing of multicast source information.  Enclaves with an existing multicast topology using PIM-SM can configure their RP  routers to peer with MSDP routers. As a first step of defense against a denial-of-service  (DoS) attack, all RP routers must limit the multicast forwarding cache to ensure that  router resources are not saturated managing an overwhelming number of PIM and  MSDP source-active entries.",
@@ -10,7 +10,7 @@ var metadata = {
     remediation: "The risk associated with this requirement can be fully mitigated by configuring the router  to filter PIM register messages, rate limiting the number of PIM register messages, and  accept MSDP packets only from known MSDP peers.  Step 1: Configure the router to filter PIM register messages received from a multicast  DR for any undesirable multicast groups and sources. The example below will deny any  multicast streams for groups 239.5.0.0/16 and allow from only sources 10.1.2.6 and  10.1.2.7.  R2(config)#ip access-list extended PIM_REGISTER_FILTER  R2(config-ext-nacl)#deny ip any 239.5.0.0 0.0.255.255  R2(config-ext-nacl)#permit ip host 10.1.2.6 any  R2(config-ext-nacl)#permit ip host 10.1.2.7 any  R2(config-ext-nacl)#deny ip any any  R2(config-ext-nacl)#exit  R2(config)#ip pim accept-register list PIM_REGISTER_FILTER  R2(config)#end  Step 2: Configure the RP to rate limit the number of multicast register messages.  R2(config)#ip pim register-rate-limit nn  Step 3: Configure the receive path or interface ACLs to only accepts MSDP packets  from known MSDP peers.  R8(config)#ip access-list extended EXTERNAL_ACL_INBOUND  R8(config-ext-nacl)#permit tcp any any established  R8(config-ext-nacl)#permit tcp host x.1.28.2 host x.1.28.8 eq 639  R8(config-ext-nacl)#deny tcp any host x.1.28.8 eq 639  R8(config-ext-nacl)#permit tcp host x.1.28.2 host x.1.28.8 eq bgp  R8(config-ext-nacl)#permit tcp host x.1.28.2 eq bgp host x.1.28.8  R8(config-ext-nacl)#permit pim host x.1.28.2 host x.1.28.8  …  …  …  R8(config-ext-nacl)#deny ip any any",
     cci: "CCI-002385",
     expectedState: "Step 1: Configure the router to filter PIM register messages received from a multicast DR for any undesirable multicast groups and sources.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "STIG"
 };

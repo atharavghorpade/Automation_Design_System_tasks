@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Disable SNMP read and write access if not in used to monitor and/or manage device. hostname(config)#no snmp-server",
     defaultValue: "",
     expectedState: "Disable SNMP read and write access if not in used to monitor and/or manage device.",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -9,7 +9,7 @@ var metadata = {
     remediation: "Configure the EIGRP address family authentication mode. hostname(config)#router eigrp <virtual-instance-name> hostname(config-router)#address-family ipv4 autonomous-system {eigrp_as- number} hostname(config-router-af)#af-interface {interface-name} hostname(config-router-af-interface)#authentication mode md5",
     defaultValue: "Not defined",
     expectedState: "Not defined",
-    generatedOn: "2026-03-02",
+    generatedOn: "2026-03-06",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
