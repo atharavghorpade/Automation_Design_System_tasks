@@ -104,4 +104,4 @@ jobs:
           echo ""
           echo "=== Deployment Status ==="
           kubectl get pods -l app=automation-design-system
-          kubectl get svc automation-design-system
+          kubectl get svc automation-design-system 
