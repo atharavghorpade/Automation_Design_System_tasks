@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-east-1
-  EKS_CLUSTER_NAME:Automation_Design_System_tasks
+  AWS_REGION:ap-south-1
+  EKS_CLUSTER_NAME:dev-cluster 
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/automation-design-system
   IMAGE_TAG: ${{ github.sha }}
 
