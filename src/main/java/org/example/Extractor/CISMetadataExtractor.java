@@ -1,15 +1,19 @@
 package org.example.Extractor;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;  // Extracts metadata from CIS Benchmark PDF documents
+import java.util.regex.Pattern;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.example.model.CIS_Benchmark;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+  
 public class CISMetadataExtractor {
 
     private static final List<String> SECTION_HEADERS = Arrays.asList(
