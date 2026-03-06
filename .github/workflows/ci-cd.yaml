@@ -44,15 +44,22 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
+      - name: Verify AWS Identity
+        run: |
+          echo "Verifying AWS identity..."
+          aws sts get-caller-identity
+          echo "Checking EKS cluster access..."
+          aws eks describe-cluster --name dev-cluster --region ap-south-1 || echo "Cannot access cluster - check IAM permissions"
+
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --name dev-cluster --region ap-south-1
-          kubectl version --client
-
-      - name: Verify kubectl connection
-        run: kubectl get nodes
+          aws eks update-kubeconfig --name dev-cluster --region ap-south-1 --alias dev-cluster
+          export KUBECONFIG=~/.kube/config
+          echo "Kubeconfig updated successfully"
 
       - name: Deploy to Kubernetes
         run: |
           sed -i 's|IMAGE_TAG|dhairyashil8416/cicd:latest|g' deployment.yaml
           kubectl apply -f deployment.yaml
+          kubectl rollout status deployment/automation-design-system
+          kubectl get pods -l app=automation-design-system

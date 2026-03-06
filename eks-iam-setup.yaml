@@ -1,0 +1,24 @@
+# AWS IAM to Kubernetes RBAC Mapping
+# This configures which AWS IAM users/roles can access the EKS cluster
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::YOUR_ACCOUNT_ID:user/YOUR_IAM_USERNAME
+      username: github-actions
+      groups:
+        - system:masters
+
+---
+# Alternative: Use IAM Role (Recommended for GitHub Actions)
+# If using an IAM role instead of user credentials:
+# 
+# mapRoles: |
+#   - rolearn: arn:aws:iam::YOUR_ACCOUNT_ID:role/GitHubActionsEKSRole
+#     username: github-actions
+#     groups:
+#       - system:masters
