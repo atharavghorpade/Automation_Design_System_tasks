@@ -49,6 +49,11 @@ jobs:
 
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --region ap-south-1 --name dev-cluster
+        mapUsers: |
+  -     userarn: arn:aws:iam::YOUR_ACCOUNT_ID:user/YOUR_IAM_USER
+    username: github-actions
+    groups:
+      - system:masters
 
       - name: Deploy to Kubernetes
         run: |
