@@ -14,6 +14,7 @@ import org.example.Generator.JsonFileGenerator;
 import org.example.model.CIS_Benchmark;
 import org.example.model.STIG_Benchmark;
 import org.example.runner.JSValidationRunner;
+import org.example.artifact.ArtifactManager;
 
 
 public class Main {  
