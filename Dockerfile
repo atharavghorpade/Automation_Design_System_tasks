@@ -11,6 +11,7 @@ RUN mvn dependency:go-offline -B
 
 # Copy source code and build
 COPY src ./src
+COPY input ./input
 RUN mvn clean package -DskipTests
 
 # Stage 2: Runtime stage
@@ -21,11 +22,8 @@ WORKDIR /app
 # Create a non-root user
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-# Copy the built JAR from builder stage or from CI build artifacts
-COPY --from=builder /app/target/*.jar app.jar
-
-# Or if using CI build artifacts, comment above and uncomment below:
-# COPY target/*.jar app.jar
+# Copy the built JAR from builder stage
+COPY --from=builder /app/target/app.jar app.jar
 
 # Create necessary directories with proper permissions
 RUN mkdir -p /app/input /app/output && \
