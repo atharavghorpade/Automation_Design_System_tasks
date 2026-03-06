@@ -21,7 +21,7 @@ spec:
         image: dhairyashil8416/cicd:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080 # Assuming the app listens on port 8080
+        - containerPort: 8080 # Assuming the app listens on port 8080 
         resources:
           requests:
             memory: "512Mi"

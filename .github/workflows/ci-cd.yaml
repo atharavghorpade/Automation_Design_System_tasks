@@ -52,7 +52,7 @@ jobs:
           echo ""
           echo "=== Checking EKS Cluster Access ==="
           if ! aws eks describe-cluster --name dev-cluster --region ap-south-1 > /dev/null 2>&1; then
-            echo "❌ ERROR: Cannot access EKS cluster"
+            echo "ERROR: Cannot access EKS cluster"
             echo "Please ensure IAM user has 'eks:DescribeCluster' permission"
             exit 1
           fi
@@ -76,7 +76,7 @@ jobs:
             echo "✓ kubectl authentication successful"
             exit 0
           else
-            echo "❌ kubectl cannot authenticate - IAM user not in aws-auth ConfigMap"
+            echo "kubectl cannot authenticate - IAM user not in aws-auth ConfigMap"
             echo ""
             echo "SOLUTION: Run this locally with cluster admin access:"
             echo "  kubectl edit configmap aws-auth -n kube-system"

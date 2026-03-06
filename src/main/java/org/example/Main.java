@@ -14,7 +14,7 @@ import org.example.Generator.JsonFileGenerator;
 import org.example.model.CIS_Benchmark;
 import org.example.model.STIG_Benchmark;
 import org.example.runner.JSValidationRunner;
-
+import org.example.artifact.ArtifactManager;   // added
 
 public class Main {  
 
@@ -25,7 +25,6 @@ public class Main {
             File cisFile = PdfLoader.getPdfFileIfExists("input/cis");
             File stigFile = PdfLoader.getPdfFileIfExists("input/stig");
 
-
             if (cisFile != null) {
 
                 System.out.println("Processing CIS: " + cisFile.getName());
@@ -34,11 +33,9 @@ public class Main {
                 List<CIS_Benchmark> cisList = cisExtractor.extract(cisFile);
                 System.out.println("Total CIS Rules Extracted: " + cisList.size());
 
-
                 JsonFileGenerator.generateJson(cisList, "cis-metadata.json");
                 CIS_checkGenerator.generateChecks(cisList);
             }
-
 
             if (stigFile != null) {
 
@@ -48,11 +45,9 @@ public class Main {
                 List<STIG_Benchmark> stigList = stigExtractor.extract(stigFile);
                 System.out.println("Total STIG Rules Extracted: " + stigList.size());
 
-
                 JsonFileGenerator.generateJson(stigList, "stig-metadata.json");
                 STIG_checkGenerator.generateChecks(stigList);
             }
-
 
             if (cisFile == null && stigFile == null) {
                 System.out.println("No input PDFs found. System exiting.");
@@ -62,10 +57,20 @@ public class Main {
 
             System.out.println("Validation Completed Successfully.");
 
+            // Artifact generation (added)
+            ArtifactManager.generateArtifactsFromJS(
+                    "output/generatedJS/cis-checks",
+                    "cis");
+
+            ArtifactManager.generateArtifactsFromJS(
+                    "output/generatedJS/stig-checks",
+                    "stig");
+
+            System.out.println("Artifact generation completed.");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
 //end of main
-//end of file
