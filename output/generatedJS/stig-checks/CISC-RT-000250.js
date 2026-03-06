@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.19",
     stigId: "CISC-RT-000250",
-    ruleId: "RULE ID: SV-216573r531085",
-    groupId: "GROUP ID: V-216573",
+    ruleId: "SV-216573r531085",
+    groupId: "V-216573",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to enforce approved authorizations for  controlling the flow of information between interconnected networks in accordance with  applicable policy.  GROUP ID: V-216573  RULE ID: SV-216573r531085",
     rationale: "Information flow control regulates authorized information to travel within a network and  between interconnected networks. Controlling the flow of network traffic is critical so it  does not introduce any unacceptable risk to the network infrastructure or data. An  example of a flow control restriction is blocking outside traffic claiming to be from within  the organization. For most routers, internal information flow control is a product of  system design.",

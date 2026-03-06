@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.81",
     stigId: "CISC-RT-000840",
-    ruleId: "RULE ID: SV-216627r531085",
-    groupId: "GROUP ID: V-216627",
+    ruleId: "SV-216627r531085",
+    groupId: "V-216627",
     severity: "HIGH",
     description: "The Cisco multicast Rendezvous Point (RP) router must be configured to filter Protocol  Independent Multicast (PIM) Join messages received from the Designated Router (DR)  for any undesirable multicast groups.  GROUP ID: V-216627  RULE ID: SV-216627r531085",
     rationale: "Real-time multicast traffic can entail multiple large flows of data. An attacker can flood a  network segment with multicast packets, over-using the available bandwidth and  thereby creating a denial-of-service (DoS) condition. Hence, it is imperative that join  messages are only accepted for authorized multicast groups.",

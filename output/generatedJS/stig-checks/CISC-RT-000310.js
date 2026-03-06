@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.25",
     stigId: "CISC-RT-000310",
-    ruleId: "RULE ID: SV-216989r531085",
-    groupId: "GROUP ID: V-216989",
+    ruleId: "SV-216989r531085",
+    groupId: "V-216989",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to restrict it from accepting outbound IP  packets that contain an illegitimate address in the source address field via egress filter  or by enabling Unicast Reverse Path Forwarding (uRPF).  GROUP ID: V-216989  RULE ID: SV-216989r531085",
     rationale: "A compromised host in an enclave can be used by a malicious platform to launch  cyberattacks on third parties. This is a common practice in \"botnets\", which are a  collection of compromised computers using malware to attack other computers or  networks. DDoS attacks frequently leverage IP source address spoofing to send  packets to multiple hosts that in turn will then send return traffic to the hosts with the IP  addresses that were forged. This can generate significant amounts of traffic. Therefore,  protection measures to counteract IP source address spoofing must be taken. When  uRPF is enabled in strict mode, the packet must be received on the interface that the  device would use to forward the return packet; thereby mitigating IP source address  spoofing.  Internal Only - General",
