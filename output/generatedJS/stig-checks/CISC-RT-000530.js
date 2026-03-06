@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.55",
     stigId: "CISC-RT-000530",
-    ruleId: "RULE ID: SV-216601r531085",
-    groupId: "GROUP ID: V-216601",
+    ruleId: "SV-216601r531085",
+    groupId: "V-216601",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject outbound route advertisements for  any prefixes belonging to the IP core.  GROUP ID: V-216601  RULE ID: SV-216601r531085",
     rationale: "Outbound route advertisements belonging to the core can result in traffic either looping  or being black holed, or at a minimum, using a non-optimized path.",

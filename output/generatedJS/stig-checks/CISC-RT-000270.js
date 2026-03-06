@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.21",
     stigId: "CISC-RT-000270",
-    ruleId: "RULE ID: SV-216575r863237",
-    groupId: "GROUP ID: V-216575",
+    ruleId: "SV-216575r863237",
+    groupId: "V-216575",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to block inbound packets with source  Bogon IP address prefixes.  GROUP ID: V-216575  RULE ID: SV-216575r863237",
     rationale: "Packets with Bogon IP source addresses should never be allowed to traverse the IP  core. Bogon IP networks are RFC1918 addresses or address blocks that have never  been assigned by the IANA or have been reserved.  Internal Only - General",
