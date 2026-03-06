@@ -21,13 +21,12 @@ public class STIGMetadataExtractor {
             PDFTextStripper stripper = new PDFTextStripper();
             String text = stripper.getText(document);
 
-            // Normalize
+            // Normalize text
             text = text.replaceAll("\\r", "");
-
-            // Remove headers/footers if needed
             text = text.replaceAll("Page \\d+\\s*", "");
+            text = text.replaceAll("\\n{2,}", "\n");
 
-            // Strict rule block pattern (captures 1.1, 2.3, 4.5 etc.)
+            // Pattern to capture rule blocks like 1.1, 2.4 etc
             Pattern rulePattern = Pattern.compile(
                     "^\\d+\\.\\d+\\s+.*?(?=^\\d+\\.\\d+\\s+|\\Z)",
                     Pattern.MULTILINE | Pattern.DOTALL
@@ -39,28 +38,50 @@ public class STIGMetadataExtractor {
 
                 String block = matcher.group().trim();
 
-                if (!block.contains("GROUP ID:")) continue;
+                // Only process valid STIG blocks
+                if (!block.contains("GROUP ID")) continue;
 
                 STIG_Benchmark meta = new STIG_Benchmark();
 
+                // Extract numeric group index (1.1, 2.3 etc)
                 meta.setGroupIdNumber(extract(block, "^\\d+\\.\\d+"));
+
+                // STIG ID (CISC-RT-000010)
                 meta.setStigId(extract(block, "CISC-RT-\\d+"));
+
+                // Extract clean GROUP ID value
                 meta.setGroupId(extract(block, "GROUP ID:\\s*(V-\\d+)"));
+
+                // Extract clean RULE ID value
                 meta.setRuleId(extract(block, "RULE ID:\\s*(SV-\\d+r\\d+)"));
 
-                // Correct severity extraction
-                meta.setSeverity(extract(block, "SEVERITY:\\s*(CAT\\s+(?:I|II|III))"));
+                // Extract severity category
+                String severity = extract(block, "SEVERITY:\\s*(CAT\\s+(?:I|II|III))");
 
+                if (severity != null) {
+                    meta.setSeverity(severity); 
+                    meta.setSeverityCategory("SEVERITY: " + severity);
+                }
+
+                // Extract CCI values
                 meta.setCci(extractAll(block, "CCI-\\d+"));
 
-                meta.setDescription(extractSection(block, "Description:", "Rationale:"));
-                meta.setRationale(extractSection(block, "Rationale:", "Audit:"));
-                meta.setAudit(extractSection(block, "Audit:", "Remediation:"));
-                meta.setRemediation(extractSection(block, "Remediation:", "Additional Information:"));
+                // Extract sections
+                meta.setDescription(
+                        extractSection(block, "Description:", "Rationale:")
+                );
 
-                // Infer expected state using heuristics and set it
-                String expected = inferExpectedStateForSTIG(meta);
-                meta.setExpectedState(expected);
+                meta.setRationale(
+                        extractSection(block, "Rationale:", "Audit:")
+                );
+
+                meta.setAudit(
+                        extractSection(block, "Audit:", "Remediation:")
+                );
+
+                meta.setRemediation(
+                        extractSection(block, "Remediation:", "Additional Information:")
+                );
 
                 result.add(meta);
             }
@@ -70,24 +91,40 @@ public class STIGMetadataExtractor {
     }
 
     private String extract(String text, String regex) {
-        Matcher m = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE)
+
+        Matcher m = Pattern
+                .compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE)
                 .matcher(text);
-        return m.find() ? m.group().trim() : null;
+
+        if (m.find()) {
+            if (m.groupCount() >= 1) {
+                String captured = m.group(1);
+                if (captured != null) {
+                    return captured.trim();
+                }
+            }
+            return m.group().trim();
+        }
+
+        return null;
     }
 
-    // For multiple CCI values
+    // Extract multiple CCI values
     private String extractAll(String text, String regex) {
 
         Matcher m = Pattern.compile(regex).matcher(text);
+
         StringBuilder sb = new StringBuilder();
 
         while (m.find()) {
             sb.append(m.group()).append(", ");
         }
 
-        return sb.length() > 0
-                ? sb.substring(0, sb.length() - 2)
-                : null;
+        if (sb.length() > 0) {
+            return sb.substring(0, sb.length() - 2);
+        }
+
+        return null;
     }
 
     private String extractSection(String text, String start, String end) {
@@ -99,33 +136,13 @@ public class STIGMetadataExtractor {
 
         Matcher m = p.matcher(text);
 
-        return m.find() ? m.group(1).trim() : null;
-    }
-
-    // Heuristic inference for expected state (similar to CISMetadataExtractor)
-    private String inferExpectedStateForSTIG(STIG_Benchmark b) {
-        String s = null;
-
-        // Prefer remediation then audit, then description, then rationale
-        if (b.getRemediation() != null && !b.getRemediation().isEmpty()) s = b.getRemediation();
-        if ((s == null || s.isEmpty()) && b.getAudit() != null && !b.getAudit().isEmpty()) s = b.getAudit();
-        if ((s == null || s.isEmpty()) && b.getDescription() != null && !b.getDescription().isEmpty()) s = b.getDescription();
-        if ((s == null || s.isEmpty()) && b.getRationale() != null && !b.getRationale().isEmpty()) s = b.getRationale();
-
-        if (s == null) return null;
-
-        s = s.replaceAll("\\s+", " ").trim();
-
-        String[] sentences = s.split("(?<=[.?!])\\s+");
-
-        Pattern verbLike = Pattern.compile("\\b(should|must|configure|set|enable|disable|ensure|remove|deny|allow|restart|apply)\\b", Pattern.CASE_INSENSITIVE);
-        for (String sent : sentences) {
-            if (verbLike.matcher(sent).find()) {
-                return sent.trim();
-            }
+        if (m.find()) {
+            return m.group(1)
+                    .replaceAll("\\s+\\n", " ")
+                    .replaceAll("\\n", " ")
+                    .trim();
         }
 
-        return sentences.length > 0 ? sentences[0].trim() : s;
+        return null;
     }
-
-}
+} 
