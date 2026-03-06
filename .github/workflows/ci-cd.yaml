@@ -13,7 +13,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  EKS_CLUSTER_NAME: my-eks-cluster
+  EKS_CLUSTER_NAME:Automation_Design_System_tasks
   DOCKER_IMAGE: ${{ secrets.DOCKER_USERNAME }}/automation-design-system
   IMAGE_TAG: ${{ github.sha }}
 
