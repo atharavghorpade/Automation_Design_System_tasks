@@ -10,7 +10,6 @@ env:
   CLUSTER_NAME: dev-cluster
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -18,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Docker image
+      - name: Build Docker Image
         run: docker build -t dhairyashil8416/cicd:latest .
 
   deploy:
@@ -35,14 +34,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
-          mapUsers: |
-       -userarn: arn:aws:iam::YOUR_ACCOUNT_ID:user/YOUR_IAM_USER
-    username: github-actions
-    groups:
-      - system:masters
 
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --region ap-south-1 --name dev-cluster
+        run: aws eks update-kubeconfig --name dev-cluster --region ap-south-1
 
       - name: Deploy to Kubernetes
         run: kubectl apply -f deployment.yaml
