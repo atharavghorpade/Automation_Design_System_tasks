@@ -4,262 +4,213 @@ import org.example.model.STIG_Benchmark;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.UUID;
 
 public class STIG_checkGenerator {
 
     public static void generateChecks(List<STIG_Benchmark> rules) throws Exception {
 
         File folder = new File("output/generatedJS/stig-checks");
+
         if (!folder.exists()) {
             folder.mkdirs();
         }
 
-        int generatedCount = 0;
-
         for (STIG_Benchmark rule : rules) {
 
-            if (rule.getStigId() == null || rule.getStigId().isBlank()) {
-                continue;
-            }
-
             String fileName = "output/generatedJS/stig-checks/"
-                    + safeFileName(rule.getStigId()) + ".js";
+                    + safeFileName(rule.getGroupId()) + ".js";
 
             try (FileWriter writer = new FileWriter(fileName)) {
                 writer.write(generateJsContent(rule));
-                generatedCount++;
             }
         }
-
-        System.out.println("Total STIG JS files generated: " + generatedCount);
     }
-
-    /* ======================================================= */
 
     private static String generateJsContent(STIG_Benchmark rule) {
 
-        /* ----------- REQUIRED METADATA SAFETY (CLIENT REQUIREMENT) ----------- */
+        String functionId = safeFunctionName(rule.getGroupId());
+        String ruleFunction = safeFunctionName(rule.getRuleId());
 
-        String expected = rule.getExpectedState();
-        if (expected == null || expected.isBlank()) {
-            expected = "Configuration must match STIG compliance requirement";
-        }
+        String audit = rule.getAudit() == null ? "" : rule.getAudit();
 
-        String remediation = rule.getRemediation();
-        if (remediation == null || remediation.isBlank()) {
-            remediation = "Apply configuration as per STIG guideline";
-        }
-
-        String audit = rule.getAudit();
-        if (audit == null || audit.isBlank()) {
-            audit = "Verify configuration manually";
-        }
-
-        /* -------------------------------------------------------------------- */
-
-        String operator = detectOperator(expected);
-        String expectedValue = extractNumber(expected);
-        String keyPhrase = extractKeyPhrase(rule);
-
-        if (keyPhrase.isEmpty()) {
-            keyPhrase = "###NO_MATCH###";
-        }
-
-        String generatedDate = LocalDate.now().toString();
+        String keyPhrase = extractKeyPhrase(audit);
 
         return """
-            var metadata = {
-                groupIdNumber: "%s",
-                stigId: "%s",
-                ruleId: "%s",
-                groupId: "%s",
-                severity: "%s",
-                description: "%s",
-                rationale: "%s",
-                audit: "%s",
-                remediation: "%s",
-                cci: "%s",
-                expectedState: "%s",
-                generatedOn: "%s",
-                generatorVersion: "2.1",
-                benchmark: "STIG"
-            };
+// ── STIG SECURITY CONTROL METADATA ──────────────────────────
+var metadata = {
+    framework: "STIG",
+    checkType: "SECURITY_CONTROL",
+    groupIdNumber: "%s",
+    stigId: "%s",
+    ruleId: "%s",
+    groupId: "%s",
+    severity: "%s",
+    severityCategory: "%s",
+    description: "%s",
+    rationale: "%s",
+    auditProcedure: "%s",
+    remediation: "%s",
+    cci: "%s",
+    expectedState: "%s",
+    generatedOn: "%s",
+    generatorVersion: "2.1",
+    benchmark: "STIG",
+    checkFormat: "STIG_CONTROL"
+};
 
-            function check(config) {
 
-                if (!config) {
-                    return { status: "ERROR", line: 0 };
-                }
+// ── EVALUATION FUNCTION ─────────────────────────────────────
+function evaluateSTIGControl_%s(config) {
 
-                var lines = String(config).split("\\n");
-                var matched = false;
-                var foundLine = 0;
-                var pass = true;
+    if (!config) {
+        return {
+            status: "ERROR",
+            stigId: metadata.stigId,
+            cci: metadata.cci,
+            severity: metadata.severity,
+            line: 0,
+            framework: "STIG",
+            category: metadata.severityCategory
+        };
+    }
 
-                for (var i = 0; i < lines.length; i++) {
+    var lines = String(config).split("\\n");
+    var matched = false;
+    var foundLine = 0;
 
-                    var line = lines[i].toLowerCase();
+    for (var i = 0; i < lines.length; i++) {
 
-                    if (line.indexOf("%s".toLowerCase()) !== -1) {
+        var line = lines[i].toLowerCase();
 
-                        matched = true;
-                        foundLine = i + 1;
+        if (line.indexOf("%s".toLowerCase()) !== -1) {
 
-                        var numberMatch = line.match(/\\d+/);
-                        var actual = numberMatch ? parseInt(numberMatch[0]) : null;
+            matched = true;
+            foundLine = i + 1;
+        }
+    }
 
-                        %s
-                    }
-                }
+    if (!matched) {
 
-                if ("%s" === "not_exists") {
-                    if (matched) {
-                        return { status: "FAIL", line: foundLine };
-                    } else {
-                        return { status: "PASS", line: 0 };
-                    }
-                }
+        return {
+            status: "FAIL",
+            stigId: metadata.stigId,
+            cci: metadata.cci,
+            severity: metadata.severity,
+            line: 0,
+            framework: "STIG",
+            category: metadata.severityCategory
+        };
+    }
 
-                if (!matched) {
-                    return { status: "FAIL", line: 0 };
-                }
+    return {
+        status: "PASS",
+        stigId: metadata.stigId,
+        cci: metadata.cci,
+        severity: metadata.severity,
+        line: foundLine,
+        framework: "STIG",
+        category: metadata.severityCategory
+    };
+}
 
-                if (pass) {
-                    return { status: "PASS", line: foundLine };
-                }
 
-                return { status: "FAIL", line: foundLine };
-            }
+// ── ALIAS FUNCTION ──────────────────────────────────────────
+function check_%s(config) {
+    return evaluateSTIGControl_%s(config);
+}
 
-            check(config);
-            """.formatted(
-                safe(rule.getGroupIdNumber()),
+
+// ── MODULE EXPORT ───────────────────────────────────────────
+module.exports = {
+    evaluateSTIGControl_%s: evaluateSTIGControl_%s,
+    check_%s: check_%s
+};
+""".formatted(
+
+                UUID.randomUUID(),
                 safe(rule.getStigId()),
                 safe(rule.getRuleId()),
                 safe(rule.getGroupId()),
                 safe(rule.getSeverity()),
+                safe(rule.getSeverity()),
                 safe(rule.getDescription()),
                 safe(rule.getRationale()),
-                safe(audit),
-                safe(remediation),
+                safe(rule.getAudit()),
+                safe(rule.getRemediation()),
                 safe(rule.getCci()),
-                safe(expected),
-                generatedDate,
+                safe(rule.getRuleId()),
+                Instant.now().toString(),
+
+                functionId,
                 safe(keyPhrase),
-                generateComparisonLogic(operator, expectedValue),
-                operator
+
+                ruleFunction,
+                functionId,
+
+                functionId,
+                functionId,
+                ruleFunction,
+                ruleFunction
         );
     }
 
-    /* ======================================================= */
+    // -------------------------------------------------
+    // Extract CLI phrase
+    // -------------------------------------------------
 
-    private static String detectOperator(String text) {
-
-        if (text == null) return "exists";
-
-        text = text.toLowerCase();
-
-        if (text.contains("must not exist") || text.contains("not be present"))
-            return "not_exists";
-
-        if (text.contains("at least") || text.contains("or more"))
-            return ">=";
-
-        if (text.contains("greater than"))
-            return ">";
-
-        if (text.contains("less than"))
-            return "<";
-
-        if (text.contains("or less"))
-            return "<=";
-
-        if (text.contains("disabled"))
-            return "equals:false";
-
-        if (text.contains("enabled"))
-            return "equals:true";
-
-        return "exists";
-    }
-
-    private static String extractNumber(String text) {
+    private static String extractKeyPhrase(String text) {
 
         if (text == null) return "";
 
-        Matcher m = Pattern.compile("(\\d+)").matcher(text);
-        return m.find() ? m.group(1) : "";
-    }
+        text = text.toLowerCase();
 
-    private static String extractKeyPhrase(STIG_Benchmark rule) {
+        if (text.contains("access-list"))
+            return "access-list";
 
-        if (rule.getAudit() != null) {
-            Matcher quoted = Pattern.compile("'([^']+)'")
-                    .matcher(rule.getAudit());
-            if (quoted.find()) {
-                return quoted.group(1).trim();
-            }
-        }
+        if (text.contains("service password-encryption"))
+            return "service password-encryption";
 
-        if (rule.getExpectedState() != null) {
+        if (text.contains("snmp-server"))
+            return "snmp-server";
 
-            String text = rule.getExpectedState().toLowerCase();
-
-            Matcher cli = Pattern.compile(
-                    "(service\\s+\\S+|ip\\s+\\S+|logging\\s+\\S+|snmp-server\\s+\\S+|interface\\s+\\S+|line\\s+vty|no\\s+\\S+)",
-                    Pattern.CASE_INSENSITIVE
-            ).matcher(text);
-
-            if (cli.find()) {
-                return cli.group(1).trim();
-            }
-        }
+        if (text.contains("logging"))
+            return "logging";
 
         return "";
     }
 
-    private static String generateComparisonLogic(String operator, String value) {
-
-        if (value.isEmpty()) {
-            return "pass = true;";
-        }
-
-        if (operator.equals(">="))
-            return "pass = (actual !== null && actual >= " + value + ");";
-
-        if (operator.equals(">"))
-            return "pass = (actual !== null && actual > " + value + ");";
-
-        if (operator.equals("<"))
-            return "pass = (actual !== null && actual < " + value + ");";
-
-        if (operator.equals("<="))
-            return "pass = (actual !== null && actual <= " + value + ");";
-
-        if (operator.equals("equals:true"))
-            return "pass = (line.indexOf('no ') !== 0);";
-
-        if (operator.equals("equals:false"))
-            return "pass = (line.indexOf('no ') === 0);";
-
-        return "pass = true;";
-    }
+    // -------------------------------------------------
+    // Utilities
+    // -------------------------------------------------
 
     private static String safe(String value) {
+
         if (value == null) return "";
+
         return value.replace("\"", "\\\"")
                 .replace("\n", " ")
                 .replace("\r", " ");
     }
 
     private static String safeFileName(String value) {
+
         if (value == null) return "unknown_rule";
+
         return value.replace(".", "_")
                 .replace("/", "_")
-                .replace(" ", "_");
+                .replace(" ", "_")
+                .replace("-", "_");
+    }
+
+    private static String safeFunctionName(String value) {
+
+        if (value == null) return "unknown_rule";
+
+        return value.replace("-", "_")
+                .replace(" ", "_")
+                .replace(".", "_");
     }
 }
