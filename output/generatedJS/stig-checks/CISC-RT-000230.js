@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.14",
     stigId: "CISC-RT-000230",
-    ruleId: "SV-216571r531085",
-    groupId: "V-216571",
+    ruleId: "RULE ID: SV-216571r531085",
+    groupId: "GROUP ID: V-216571",
     severity: "HIGH",
     description: "The Cisco router must be configured to disable the auxiliary port unless it is connected  to a secured modem providing encryption and authentication.  GROUP ID: V-216571  RULE ID: SV-216571r531085",
     rationale: "The use of POTS lines to modems connecting to network devices provides clear text of  authentication traffic over commercial circuits that could be captured and used to  compromise the network. Additional war dial attacks on the device could degrade the  device and the production network.  Secured modem devices must be able to authenticate users and must negotiate a key  exchange before full encryption takes place. The modem will provide full encryption  capability (Triple DES) or stronger. The technician who manages these devices will be  authenticated using a key fob and granted access to the appropriate maintenance port;  thus, the technician will gain access to the managed device (router, switch, etc.). The  token provides a method of strong (two-factor) user authentication. The token works in  conjunction with a server to generate one-time user passwords that will change values  at second intervals. The user must know a personal identification number (PIN) and  possess the token to be allowed access to the device.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001414",
     expectedState: "Disable the auxiliary port.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

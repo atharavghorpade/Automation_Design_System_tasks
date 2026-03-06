@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.11",
     stigId: "CISC-RT-000200",
-    ruleId: "SV-216568r531085",
-    groupId: "V-216568",
+    ruleId: "RULE ID: SV-216568r531085",
+    groupId: "GROUP ID: V-216568",
     severity: "HIGH",
     description: "The Cisco router must be configured to log all packets that have been dropped at  interfaces via an ACL.  GROUP ID: V-216568  RULE ID: SV-216568r531085",
     rationale: "Auditing and logging are key components of any security architecture. It is essential for  security personnel to know what is being done or attempted to be done, and by whom,  to compile an accurate risk assessment. Auditing the actions on network devices  provides a means to recreate an attack or identify a configuration mistake on the device.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-000134",
     expectedState: "Configure ACLs to log packets that are dropped as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

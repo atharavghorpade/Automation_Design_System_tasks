@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.22",
     stigId: "CISC-RT-000280",
-    ruleId: "SV-216576r531085",
-    groupId: "V-216576",
+    ruleId: "RULE ID: SV-216576r531085",
+    groupId: "GROUP ID: V-216576",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to protect an enclave connected to an  alternate gateway by using an inbound filter that only permits packets with destination  addresses within the sites address space.  GROUP ID: V-216576  RULE ID: SV-216576r531085",
     rationale: "Enclaves with alternate gateway connections must take additional steps to ensure there  is no compromise on the enclave network or NIPRNet. Without verifying the destination  address of traffic coming from the site's alternate gateway, the perimeter router could be  routing transit data from the Internet into the NIPRNet. This could also make the  perimeter router vulnerable to a denial-of-service (DoS) attack as well as provide a back  door into the NIPRNet. The DoD enclave must ensure the ingress filter applied to  external interfaces on a perimeter router connecting to an Approved Gateway is secure  through filters permitting packets with a destination address belonging to the DoD  enclave's address block.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001414",
     expectedState: "Configure the ingress ACL of the perimeter router connected to an alternate gateway to only permit packets with destination addresses of the site's NIPRNet address space or a destination address belonging to the address block assigned by the alternate gateway network service provider as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

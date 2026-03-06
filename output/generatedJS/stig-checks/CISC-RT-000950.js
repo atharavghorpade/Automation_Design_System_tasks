@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.92",
     stigId: "CISC-RT-000950",
-    ruleId: "SV-216638r531085",
-    groupId: "V-216638",
+    ruleId: "RULE ID: SV-216638r531085",
+    groupId: "GROUP ID: V-216638",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  use a loopback address as the source address when originating MSDP traffic.  GROUP ID: V-216638  RULE ID: SV-216638r531085",
     rationale: "Using a loopback address as the source address offers a multitude of uses for security,  access, management, and scalability of MSDP routers. It is easier to construct  appropriate ingress filters for router management plane traffic destined to the network  management subnet since the source addresses will be from the range used for  loopback interfaces instead of a larger range of addresses used for physical interfaces.  Log information recorded by authentication and syslog servers will record the router’s  loopback address instead of the numerous physical interface addresses.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-000366",
     expectedState: "Configure the router to use its loopback address is used as the source address when sending MSDP packets.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

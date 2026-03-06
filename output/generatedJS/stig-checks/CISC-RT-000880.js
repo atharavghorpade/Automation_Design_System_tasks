@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.85",
     stigId: "CISC-RT-000880",
-    ruleId: "SV-216631r856199",
-    groupId: "V-216631",
+    ruleId: "RULE ID: SV-216631r856199",
+    groupId: "GROUP ID: V-216631",
     severity: "HIGH",
     description: "The Cisco multicast Designated Router (DR) must be configured to limit the number of  mroute states resulting from Internet Group Management Protocol (IGMP) and Multicast  Listener Discovery (MLD) Host Membership Reports.  GROUP ID: V-216631  RULE ID: SV-216631r856199",
     rationale: "The current multicast paradigm can let any host join any multicast group at any time by  sending an IGMP or MLD membership report to the DR. In a Protocol Independent  Multicast (PIM) Sparse Mode network, the DR will send a PIM Join message for the  group to the RP. Without any form of admission control, this can pose a security risk to  the entire multicast domain - specifically the multicast routers along the shared tree from  the DR to the RP that must maintain the mroute state information for each group join  request. Hence, it is imperative that the DR is configured to limit the number of mroute  state information that must be maintained to mitigate the risk of IGMP or MLD flooding.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002385",
     expectedState: "Configure the DR on a global or interface basis to limit the number of mroute states resulting from IGMP or MLD membership reports.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

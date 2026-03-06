@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.37",
     stigId: "CISC-RT-000394",
-    ruleId: "SV-230145r856667",
-    groupId: "V-230145",
+    ruleId: "RULE ID: SV-230145r856667",
+    groupId: "GROUP ID: V-230145",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to drop IPv6 packets containing a Hop- by-Hop header with invalid option type values.  GROUP ID: V-230145  RULE ID: SV-230145r856667",
     rationale: "These options are intended to be for the Destination Options header only. The optional  and extensible natures of the IPv6 extension headers require higher scrutiny since  many implementations do not always drop packets with headers that it cannot recognize  and hence could cause a Denial-of-Service on the target device. In addition, the type,  length, value (TLV) formatting provides the ability for headers to be very large.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002403",
     expectedState: "R1(config)#ipv6 access-list FILTER_IPV6 R1(config-ipv6-acl)#deny hbh any any dest-option-type 4 log R1(config-ipv6-acl)#deny hbh any any dest-option-type 195 log R1(config-ipv6-acl)#deny hbh any any dest-option-type home-address log R1(config-ipv6-acl)# permit ipv6 … … … … R1(config-ipv6-acl)#deny ipv6 any any log R1(config-ipv6-acl)#exit R1(config)#int g1/0 R1(config-if)#ipv6 traffic-filter FILTER_IPV6 R1(config-if)#end",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

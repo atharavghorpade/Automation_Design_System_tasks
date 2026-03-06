@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.56",
     stigId: "CISC-RT-000540",
-    ruleId: "SV-216602r531085",
-    groupId: "V-216602",
+    ruleId: "RULE ID: SV-216602r531085",
+    groupId: "GROUP ID: V-216602",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject route advertisements from BGP  peers that do not list their autonomous system (AS) number as the first AS in the  AS_PATH attribute.  GROUP ID: V-216602  RULE ID: SV-216602r531085",
     rationale: "Verifying the path a route has traversed will ensure the IP core is not used as a transit  network for unauthorized or possibly even Internet traffic. All autonomous system  boundary routers (ASBRs) must ensure updates received from eBGP peers list their AS  number as the first AS in the AS_PATH attribute.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-000032",
     expectedState: "Configure the router to deny updates received from eBGP peers that do not list their AS number as the first AS in the AS_PATH attribute.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

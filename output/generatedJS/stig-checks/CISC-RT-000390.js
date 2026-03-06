@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.33",
     stigId: "CISC-RT-000390",
-    ruleId: "SV-216587r531085",
-    groupId: "V-216587",
+    ruleId: "RULE ID: SV-216587r531085",
+    groupId: "GROUP ID: V-216587",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to block all outbound management  traffic.  GROUP ID: V-216587  RULE ID: SV-216587r531085",
     rationale: "For in-band management, the management network must have its own subnet in order  to enforce control and access boundaries provided by Layer 3 network nodes, such as  routers and firewalls. Management traffic between the managed network elements and  the management network is routed via the same links and nodes as that used for  production or operational traffic. Safeguards must be implemented to ensure that the  management traffic does not leak past the perimeter of the managed network.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "Configure the perimeter router of the managed network with an outbound ACL on the egress interface to block all management traffic.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

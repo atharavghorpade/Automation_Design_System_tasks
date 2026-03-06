@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.39",
     stigId: "CISC-RT-000396",
-    ruleId: "SV-230152r856671",
-    groupId: "V-230152",
+    ruleId: "RULE ID: SV-230152r856671",
+    groupId: "GROUP ID: V-230152",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to drop IPv6 packets containing an  extension header with the Endpoint Identification option.  GROUP ID: V-230152  RULE ID: SV-230152r856671",
     rationale: "The optional and extensible natures of the IPv6 extension headers require higher  scrutiny since many implementations do not always drop packets with headers that it  cannot recognize, and hence could cause a Denial-of-Service on the target device. In  addition, the type, length, value (TLV) formatting provides the ability for headers to be  very large. This option type is associated with the Nimrod Routing system and has no  defining RFC document.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002403",
     expectedState: "Configure the router to drop IPv6 packets containing an option type values of 0x8A (Endpoint Identification) regardless of whether it appears in a Hop-by-Hop or Destination Option header as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

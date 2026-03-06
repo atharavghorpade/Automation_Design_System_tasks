@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.46",
     stigId: "CISC-RT-000440",
-    ruleId: "SV-216592r531085",
-    groupId: "V-216592",
+    ruleId: "RULE ID: SV-216592r531085",
+    groupId: "GROUP ID: V-216592",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  block any traffic destined to itself that is not sourced from the OOBM network or the  Network Operations Center (NOC).  GROUP ID: V-216592  RULE ID: SV-216592r531085",
     rationale: "If the gateway router is not a dedicated device for the OOBM network, several  safeguards must be implemented for containment of management and production traffic  boundaries. It is imperative that hosts from the managed network are not able to access  the OOBM gateway router.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "Step 1: Configure the ACL to only allow traffic to the route processor from the OOBM backbone and the NOC.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

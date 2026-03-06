@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.89",
     stigId: "CISC-RT-000920",
-    ruleId: "SV-216635r531085",
-    groupId: "V-216635",
+    ruleId: "RULE ID: SV-216635r531085",
+    groupId: "GROUP ID: V-216635",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  filter received source-active multicast advertisements for any undesirable multicast  groups and sources.  GROUP ID: V-216635  RULE ID: SV-216635r531085",
     rationale: "The interoperability of BGP extensions for interdomain multicast routing and MSDP  enables seamless connectivity of multicast domains between autonomous systems.  MP-BGP advertises the unicast prefixes of the multicast sources used by Protocol  Independent Multicast (PIM) routers to perform RPF checks and build multicast  distribution trees. MSDP is a mechanism used to connect multiple PIM sparse-mode  domains, allowing RPs from different domains to share information about active  sources. When RPs in peering multicast domains hear about active sources, they can  pass on that information to their local receivers, thereby allowing multicast data to be  forwarded between the domains. Configuring an import policy to block multicast  advertisements for reserved, Martian, single-source multicast, and any other  undesirable multicast groups, as well as any source-group (S, G) states with Bogon  source addresses, would assist in avoiding unwanted multicast traffic from traversing  the core.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001368",
     expectedState: "Configure the MSDP router to filter received source-active multicast advertisements for any undesirable multicast groups and sources as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

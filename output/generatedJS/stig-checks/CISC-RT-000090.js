@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.4",
     stigId: "CISC-RT-000090",
-    ruleId: "SV-216559r856180",
-    groupId: "V-216559",
+    ruleId: "RULE ID: SV-216559r856180",
+    groupId: "GROUP ID: V-216559",
     severity: "HIGH",
     description: "The Cisco router must not be configured to have any zero-touch deployment feature  enabled when connected to an operational network.  GROUP ID: V-216559  RULE ID: SV-216559r856180",
     rationale: "Network devices that are configured via a zero-touch deployment or auto-loading  feature can have their startup configuration or image pushed to the device for  installation via TFTP or Remote Copy (rcp). Loading an image or configuration file from  the network is taking a security risk because the file could be intercepted by an attacker  who could corrupt the file, resulting in a denial of service.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002385",
     expectedState: "Disable configuration auto-loading if enabled using the following commands.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

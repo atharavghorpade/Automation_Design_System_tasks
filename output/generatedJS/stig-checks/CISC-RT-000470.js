@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.49",
     stigId: "CISC-RT-000470",
-    ruleId: "SV-216991r856208",
-    groupId: "V-216991",
+    ruleId: "RULE ID: SV-216991r856208",
+    groupId: "GROUP ID: V-216991",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to enable the Generalized TTL Security  Mechanism (GTSM).  GROUP ID: V-216991  RULE ID: SV-216991r856208",
     rationale: "As described in RFC 3682, GTSM is designed to protect a router's IP-based control  plane from DoS attacks. Many attacks focused on CPU load and line-card overload can  be prevented by implementing GTSM on all Exterior Border Gateway Protocol speaking  routers.  GTSM is based on the fact that the vast majority of control plane peering is established  between adjacent routers; that is, the Exterior Border Gateway Protocol peers are either  between connecting interfaces or between loopback interfaces. Since TTL spoofing is  considered nearly impossible, a mechanism based on an expected TTL value provides  a simple and reasonably robust defense from infrastructure attacks based on forged  control plane traffic.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002385",
     expectedState: "Configure TTL security on all external BGP neighbors as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 

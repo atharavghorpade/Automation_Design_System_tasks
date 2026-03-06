@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.55",
     stigId: "CISC-RT-000530",
-    ruleId: "SV-216601r531085",
-    groupId: "V-216601",
+    ruleId: "RULE ID: SV-216601r531085",
+    groupId: "GROUP ID: V-216601",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject outbound route advertisements for  any prefixes belonging to the IP core.  GROUP ID: V-216601  RULE ID: SV-216601r531085",
     rationale: "Outbound route advertisements belonging to the core can result in traffic either looping  or being black holed, or at a minimum, using a non-optimized path.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "Step 1: Configure a prefix list for containing all customer and local AS prefixes as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.1",
+    generatorVersion: "2.0",
     benchmark: "STIG"
 };
 
