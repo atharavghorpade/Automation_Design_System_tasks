@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.71",
     stigId: "CISC-RT-000740",
-    ruleId: "RULE ID: SV-216617r531085",
-    groupId: "GROUP ID: V-216617",
+    ruleId: "SV-216617r531085",
+    groupId: "V-216617",
     severity: "HIGH",
     description: "The Cisco PE router must be configured with Unicast Reverse Path Forwarding (uRPF)  loose mode enabled on all CE-facing interfaces.  GROUP ID: V-216617  RULE ID: SV-216617r531085",
     rationale: "The uRPF feature is a defense against spoofing and denial-of-service (DoS) attacks by  verifying if the source address of any ingress packet is reachable. To mitigate attacks  that rely on forged source addresses, all provider edge routers must enable uRPF loose  mode to guarantee that all packets received from a CE router contain source addresses  that are in the route table.",

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.17",
     stigId: "CISC-RT-000237",
-    ruleId: "RULE ID: SV-230041r532998",
-    groupId: "GROUP ID: V-230041",
+    ruleId: "SV-230041r532998",
+    groupId: "V-230041",
     severity: "HIGH",
     description: "The Cisco router must not be configured to use IPv6 Site Local Unicast addresses.  GROUP ID: V-230041  RULE ID: SV-230041r532998",
     rationale: "As currently defined, site local addresses are ambiguous and can be present in multiple  sites. The address itself does not contain any indication of the site to which it belongs.  The use of site-local addresses has the potential to adversely affect network security  through leaks, ambiguity, and potential misrouting as documented in section 2 of  RFC3879. RFC3879 formally deprecates the IPv6 site-local unicast prefix FEC0::/10 as  defined in RFC3513.",

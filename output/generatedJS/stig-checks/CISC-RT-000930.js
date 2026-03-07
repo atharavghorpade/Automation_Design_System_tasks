@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.90",
     stigId: "CISC-RT-000930",
-    ruleId: "RULE ID: SV-216636r531085",
-    groupId: "GROUP ID: V-216636",
+    ruleId: "SV-216636r531085",
+    groupId: "V-216636",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  filter source-active multicast advertisements to external MSDP peers to avoid global  visibility of local-only multicast sources and groups.  GROUP ID: V-216636  RULE ID: SV-216636r531085",
     rationale: "To avoid global visibility of local information, there are a number of source-group (S, G)  states in a PIM-SM domain that must not be leaked to another domain, such as  multicast sources with private address, administratively scoped multicast addresses,  and the auto-RP groups (224.0.1.39 and 224.0.1.40).  Allowing a multicast distribution tree, local to the core, to extend beyond its boundary  could enable local multicast traffic to leak into other autonomous systems and customer  networks.",

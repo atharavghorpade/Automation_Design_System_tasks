@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.9",
     stigId: "CISC-RT-000180",
-    ruleId: "RULE ID: SV-216566r856185",
-    groupId: "GROUP ID: V-216566",
+    ruleId: "SV-216566r856185",
+    groupId: "V-216566",
     severity: "HIGH",
     description: "The Cisco router must be configured to have Internet Control Message Protocol (ICMP)  mask reply messages disabled on all external interfaces.  GROUP ID: V-216566  RULE ID: SV-216566r856185",
     rationale: "The ICMP supports IP traffic by relaying information about paths, routes, and network  conditions. Routers automatically send ICMP messages under a wide variety of  conditions. Mask Reply ICMP messages are commonly used by attackers for network  mapping and diagnosis.",
