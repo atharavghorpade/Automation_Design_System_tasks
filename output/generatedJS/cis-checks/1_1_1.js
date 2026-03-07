@@ -14,7 +14,7 @@ var metadata = {
     benchmark: "CIS"
 };
 
-function check(config) {
+function check(config) {  // config is the output of "show running-config | inc aaa new-model"
 
     if (!config) {
         return { status: "ERROR", line: 0 };
