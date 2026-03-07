@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 public class STIGMetadataExtractor {
 
+    
     public List<STIG_Benchmark> extract(File pdfFile) throws Exception {
 
         List<STIG_Benchmark> result = new ArrayList<>();
