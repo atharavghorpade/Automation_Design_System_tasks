@@ -62,7 +62,7 @@ jobs:
         run: docker push dhairyashil8416/cicd:latest
 
   deploy:
-    needs: push
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
