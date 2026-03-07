@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.77",
     stigId: "CISC-RT-000800",
-    ruleId: "RULE ID: SV-216623r531085",
-    groupId: "GROUP ID: V-216623",
+    ruleId: "SV-216623r531085",
+    groupId: "V-216623",
     severity: "HIGH",
     description: "The Cisco multicast router must be configured to bind a Protocol Independent Multicast  (PIM) neighbor filter to interfaces that have PIM enabled.  GROUP ID: V-216623  RULE ID: SV-216623r531085",
     rationale: "PIM is a routing protocol used to build multicast distribution trees for forwarding  multicast traffic across the network infrastructure. PIM traffic must be limited to only  known PIM neighbors by configuring and binding a PIM neighbor filter to those  interfaces that have PIM enabled. If a PIM neighbor filter is not applied to those  interfaces that have PIM enabled, unauthorized routers can join the PIM domain,  discover and use the rendezvous points, and also advertise their rendezvous points into  the domain. This can result in a denial of service by traffic flooding or result in the  unauthorized transfer of data.",

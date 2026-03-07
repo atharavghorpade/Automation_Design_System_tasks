@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.79",
     stigId: "CISC-RT-000820",
-    ruleId: "RULE ID: SV-216625r864156",
-    groupId: "GROUP ID: V-216625",
+    ruleId: "SV-216625r864156",
+    groupId: "V-216625",
     severity: "HIGH",
     description: "The Cisco multicast Rendezvous Point (RP) router must be configured to limit the  multicast forwarding cache so that its resources are not saturated by managing an  overwhelming number of Protocol Independent Multicast (PIM) and Multicast Source  Discovery Protocol (MSDP) source-active entries.  GROUP ID: V-216625  RULE ID: SV-216625r864156",
     rationale: "MSDP peering between networks enables sharing of multicast source information.  Enclaves with an existing multicast topology using PIM-SM can configure their RP  routers to peer with MSDP routers. As a first step of defense against a denial-of-service  (DoS) attack, all RP routers must limit the multicast forwarding cache to ensure that  router resources are not saturated managing an overwhelming number of PIM and  MSDP source-active entries.",

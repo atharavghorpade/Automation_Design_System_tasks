@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.6",
     stigId: "CISC-RT-000150",
-    ruleId: "RULE ID: SV-216563r856182",
-    groupId: "GROUP ID: V-216563",
+    ruleId: "SV-216563r856182",
+    groupId: "V-216563",
     severity: "HIGH",
     description: "The Cisco router must be configured to have Gratuitous ARP disabled on all external  interfaces.  GROUP ID: V-216563  RULE ID: SV-216563r856182",
     rationale: "A gratuitous ARP is an ARP broadcast in which the source and destination MAC  addresses are the same. It is used to inform the network about a host IP address. A  spoofed gratuitous ARP message can cause network mapping information to be stored  incorrectly, causing network malfunction.",

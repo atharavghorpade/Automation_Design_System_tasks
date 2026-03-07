@@ -21,13 +21,12 @@ public class STIGMetadataExtractor {
             PDFTextStripper stripper = new PDFTextStripper();
             String text = stripper.getText(document);
 
-            // Normalize
+            // Normalize text
             text = text.replaceAll("\\r", "");
-
-            // Remove headers/footers if needed
             text = text.replaceAll("Page \\d+\\s*", "");
+            text = text.replaceAll("\\n{2,}", "\n");
 
-            // Strict rule block pattern (captures 1.1, 2.3, 4.5 etc.)
+            // Pattern to capture rule blocks like 1.1, 2.4 etc
             Pattern rulePattern = Pattern.compile(
                     "^\\d+\\.\\d+\\s+.*?(?=^\\d+\\.\\d+\\s+|\\Z)",
                     Pattern.MULTILINE | Pattern.DOTALL
@@ -39,13 +38,21 @@ public class STIGMetadataExtractor {
 
                 String block = matcher.group().trim();
 
-                if (!block.contains("GROUP ID:")) continue;
+                // Only process valid STIG blocks
+                if (!block.contains("GROUP ID")) continue;
 
                 STIG_Benchmark meta = new STIG_Benchmark();
 
+                // Extract numeric group index (1.1, 2.3 etc)
                 meta.setGroupIdNumber(extract(block, "^\\d+\\.\\d+"));
+
+                // STIG ID (CISC-RT-000010)
                 meta.setStigId(extract(block, "CISC-RT-\\d+"));
+
+                // Extract clean GROUP ID value
                 meta.setGroupId(extract(block, "GROUP ID:\\s*(V-\\d+)"));
+
+                // Extract clean RULE ID value
                 meta.setRuleId(extract(block, "RULE ID:\\s*(SV-\\d+r\\d+)"));
 
                 // Correct severity extraction
@@ -53,14 +60,25 @@ public class STIGMetadataExtractor {
 
                 meta.setCci(extractAll(block, "CCI-\\d+"));
 
-                meta.setDescription(extractSection(block, "Description:", "Rationale:"));
-                meta.setRationale(extractSection(block, "Rationale:", "Audit:"));
-                meta.setAudit(extractSection(block, "Audit:", "Remediation:"));
-                meta.setRemediation(extractSection(block, "Remediation:", "Additional Information:"));
+                // Extract sections
+                meta.setDescription(
+                        extractSection(block, "Description:", "Rationale:")
+                );
 
-                // Infer expected state using heuristics and set it
-                String expected = inferExpectedStateForSTIG(meta);
-                meta.setExpectedState(expected);
+                meta.setRationale(
+                        extractSection(block, "Rationale:", "Audit:")
+                );
+
+                meta.setAudit(
+                        extractSection(block, "Audit:", "Remediation:")
+                );
+
+                meta.setRemediation(
+                        extractSection(block, "Remediation:", "Additional Information:")
+                );
+
+                // Keep parity with CIS extraction by populating expected state.
+                meta.setExpectedState(inferExpectedStateForSTIG(meta));
 
                 result.add(meta);
             }
@@ -70,24 +88,29 @@ public class STIGMetadataExtractor {
     }
 
     private String extract(String text, String regex) {
-        Matcher m = Pattern.compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE)
+
+        Matcher m = Pattern
+                .compile(regex, Pattern.MULTILINE | Pattern.CASE_INSENSITIVE)
                 .matcher(text);
         return m.find() ? m.group().trim() : null;
     }
 
-    // For multiple CCI values
+    // Extract multiple CCI values
     private String extractAll(String text, String regex) {
 
         Matcher m = Pattern.compile(regex).matcher(text);
+
         StringBuilder sb = new StringBuilder();
 
         while (m.find()) {
             sb.append(m.group()).append(", ");
         }
 
-        return sb.length() > 0
-                ? sb.substring(0, sb.length() - 2)
-                : null;
+        if (sb.length() > 0) {
+            return sb.substring(0, sb.length() - 2);
+        }
+
+        return null;
     }
 
     private String extractSection(String text, String start, String end) {
@@ -125,7 +148,6 @@ public class STIGMetadataExtractor {
             }
         }
 
-        return sentences.length > 0 ? sentences[0].trim() : s;
+        return null;
     }
-
-}
+} 

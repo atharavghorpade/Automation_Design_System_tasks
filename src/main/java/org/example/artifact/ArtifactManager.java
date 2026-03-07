@@ -9,7 +9,7 @@ public class ArtifactManager {
 
     public static void generateArtifactsFromJS(
             String jsDirectory,
-            String benchmarkType) {
+            String benchmarkType) { // e.g., "check" or "exploit"
 
                 
         try {

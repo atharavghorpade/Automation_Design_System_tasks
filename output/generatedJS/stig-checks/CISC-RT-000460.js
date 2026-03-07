@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.48",
     stigId: "CISC-RT-000460",
-    ruleId: "RULE ID: SV-216594r531085",
-    groupId: "GROUP ID: V-216594",
+    ruleId: "SV-216594r531085",
+    groupId: "V-216594",
     severity: "HIGH",
     description: "The Cisco router providing connectivity to the Network Operations Center (NOC) must  be configured to forward all in-band management traffic via an IPsec tunnel.  GROUP ID: V-216594  RULE ID: SV-216594r531085",
     rationale: "When the production network is managed in-band, the management network could be  housed at a NOC that is located remotely at single or multiple interconnected sites.  NOC interconnectivity, as well as connectivity between the NOC and the managed  network, must be enabled using IPsec tunnels to provide the separation and integrity of  the managed traffic.  Internal Only - General",
