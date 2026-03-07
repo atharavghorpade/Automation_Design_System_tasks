@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.74",
     stigId: "CISC-RT-000770",
-    ruleId: "RULE ID: SV-216620r917420",
-    groupId: "GROUP ID: V-216620",
+    ruleId: "SV-216620r917420",
+    groupId: "V-216620",
     severity: "HIGH",
     description: "The Cisco P router must be configured to enforce a Quality-of-Service (QoS) policy to  provide preferred treatment for mission-critical applications.  GROUP ID: V-216620  RULE ID: SV-216620r917420",
     rationale: "Different applications have unique requirements and toleration levels for delay, jitter,  bandwidth, packet loss, and availability. To manage the multitude of applications and  services, a network requires a QoS framework to differentiate traffic and provide a  method to manage network congestion. The Differentiated Services Model (DiffServ) is  based on per-hop behavior by categorizing traffic into different classes and enabling  each node to enforce a forwarding treatment to each packet as dictated by a policy.  Packet markings such as IP Precedence and its successor, Differentiated Services  Code Points (DSCP), were defined along with specific per-hop behaviors for key traffic  types to enable a scalable QoS solution. DiffServ QoS categorizes network traffic,  prioritizes it according to its relative importance, and provides priority treatment based  on the classification. It is imperative that end-to-end QoS is implemented within the IP  core network to provide preferred treatment for mission-critical applications.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001095",
     expectedState: "Configure to enforce a QoS policy to provide preferred treatment for mission-critical applications.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.43",
     stigId: "CISC-RT-000410",
-    ruleId: "RULE ID: SV-216589r531085",
-    groupId: "GROUP ID: V-216589",
+    ruleId: "SV-216589r531085",
+    groupId: "V-216589",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  forward only authorized management traffic to the Network Operations Center (NOC).  GROUP ID: V-216589  RULE ID: SV-216589r531085",
     rationale: "The OOBM network is an IP network used exclusively for the transport of OAM&P data  from the network being managed to the OSS components located at the NOC. Its  design provides connectivity to each managed network device, enabling network  management traffic to flow between the managed network elements and the NOC. This  allows the use of paths separate from those used by the managed network.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "Configure ACLs to permit only authorized management traffic into IPsec tunnels or the OOBM interface used for forwarding management data as shown in the examples below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

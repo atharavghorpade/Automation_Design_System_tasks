@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.50",
     stigId: "CISC-RT-000480",
-    ruleId: "RULE ID: SV-216992r877980",
-    groupId: "GROUP ID: V-216992",
+    ruleId: "SV-216992r877980",
+    groupId: "V-216992",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to use a unique key for each autonomous  system (AS) that it peers with.  GROUP ID: V-216992  RULE ID: SV-216992r877980",
     rationale: "If the same keys are used between eBGP neighbors, the chance of a hacker  compromising any of the BGP sessions increases. It is possible that a malicious user  exists in one autonomous system who would know the key used for the eBGP session.  This user would then be able to hijack BGP sessions with other trusted neighbors.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002205",
     expectedState: "Configure the router to use unique keys for each AS that it peers with as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

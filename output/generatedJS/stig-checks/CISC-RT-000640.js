@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.66",
     stigId: "CISC-RT-000640",
-    ruleId: "RULE ID: SV-216612r531085",
-    groupId: "GROUP ID: V-216612",
+    ruleId: "SV-216612r531085",
+    groupId: "V-216612",
     severity: "HIGH",
     description: "The Cisco PE router must be configured to have each Virtual Routing and Forwarding  (VRF) instance with the appropriate Route Target (RT).  GROUP ID: V-216612  RULE ID: SV-216612r531085",
     rationale: "The primary security model for an MPLS L3VPN as well as a VRF-lite infrastructure is  traffic separation. Each interface can only be associated to one VRF, which is the  fundamental framework for traffic separation. Forwarding decisions are made based on  the routing table belonging to the VRF. Control of what routes are imported into or  exported from a VRF is based on the RT. It is critical that traffic does not leak from one  COI tenant or L3VPN to another; hence, it is imperative that the correct RT is configured  for each VRF.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-000366",
     expectedState: "Configure the router to have each VRF instance defined with the correct RT.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

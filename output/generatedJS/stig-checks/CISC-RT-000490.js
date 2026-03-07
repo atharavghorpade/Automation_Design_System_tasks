@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.51",
     stigId: "CISC-RT-000490",
-    ruleId: "RULE ID: SV-216597r877976",
-    groupId: "GROUP ID: V-216597",
+    ruleId: "SV-216597r877976",
+    groupId: "V-216597",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject inbound route advertisements for  any Bogon prefixes.  GROUP ID: V-216597  RULE ID: SV-216597r877976",
     rationale: "Accepting route advertisements for Bogon prefixes can result in the local autonomous  system (AS) becoming a transit for malicious traffic as it will in turn advertise these  prefixes to neighbor autonomous systems.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001368",
     expectedState: "Configure the router to reject inbound route advertisements for any Bogon prefixes.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

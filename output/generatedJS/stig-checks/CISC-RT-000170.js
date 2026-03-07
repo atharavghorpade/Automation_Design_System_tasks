@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.8",
     stigId: "CISC-RT-000170",
-    ruleId: "RULE ID: SV-216565r856184",
-    groupId: "GROUP ID: V-216565",
+    ruleId: "SV-216565r856184",
+    groupId: "V-216565",
     severity: "HIGH",
     description: "The Cisco router must be configured to have Internet Control Message Protocol (ICMP)  unreachable messages disabled on all external interfaces.  GROUP ID: V-216565  RULE ID: SV-216565r856184",
     rationale: "The ICMP supports IP traffic by relaying information about paths, routes, and network  conditions. Routers automatically send ICMP messages under a wide variety of  conditions. Host unreachable ICMP messages are commonly used by attackers for  network mapping and diagnosis.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002385",
     expectedState: "Step 1: Disable ip unreachables on all external interfaces.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

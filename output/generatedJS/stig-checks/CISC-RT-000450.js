@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.47",
     stigId: "CISC-RT-000450",
-    ruleId: "RULE ID: SV-216593r531085",
-    groupId: "GROUP ID: V-216593",
+    ruleId: "SV-216593r531085",
+    groupId: "V-216593",
     severity: "HIGH",
     description: "The Cisco router must be configured to only permit management traffic that ingresses  and egresses the out-of-band management (OOBM) interface.  GROUP ID: V-216593  RULE ID: SV-216593r531085",
     rationale: "The OOBM access switch will connect to the management interface of the managed  network elements. The management interface can be a true OOBM interface or a  standard interface functioning as the management interface. In either case, the  management interface of the managed network element will be directly connected to the  OOBM network.  An OOBM interface does not forward transit traffic, thereby providing complete  separation of production and management traffic. Since all management traffic is  immediately forwarded into the management network, it is not exposed to possible  tampering. The separation also ensures that congestion or failures in the managed  network do not affect the management of the device. If the device does not have an  OOBM port, the interface functioning as the management interface must be configured  so that management traffic does not leak into the managed network and that production  traffic does not leak into the management network.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "If the management interface is not a dedicated OOBM interface, it must be configured with both an ingress and egress ACL.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

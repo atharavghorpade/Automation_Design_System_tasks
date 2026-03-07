@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.80",
     stigId: "CISC-RT-000830",
-    ruleId: "RULE ID: SV-216626r531085",
-    groupId: "GROUP ID: V-216626",
+    ruleId: "SV-216626r531085",
+    groupId: "V-216626",
     severity: "HIGH",
     description: "The Cisco multicast Rendezvous Point (RP) router must be configured to filter Protocol  Independent Multicast (PIM) Register messages received from the Designated Router  (DR) for any undesirable multicast groups and sources.  GROUP ID: V-216626  RULE ID: SV-216626r531085",
     rationale: "Real-time multicast traffic can entail multiple large flows of data. An attacker can flood a  network segment with multicast packets, over-using the available bandwidth and  thereby creating a denial-of-service (DoS) condition. Hence, it is imperative that register  messages are accepted only for authorized multicast groups and sources.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001414",
     expectedState: "Configure the router to filter PIM register messages received from a multicast DR for any undesirable multicast groups and sources.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 
