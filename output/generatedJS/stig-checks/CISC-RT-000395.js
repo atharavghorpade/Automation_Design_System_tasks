@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.38",
     stigId: "CISC-RT-000395",
-    ruleId: "RULE ID: SV-230149r856669",
-    groupId: "GROUP ID: V-230149",
+    ruleId: "SV-230149r856669",
+    groupId: "V-230149",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to drop IPv6 packets containing a  Destination Option header with invalid option type values.  GROUP ID: V-230149  RULE ID: SV-230149r856669",
     rationale: "These options are intended to be for the Hop-by-Hop header only. The optional and  extensible natures of the IPv6 extension headers require higher scrutiny since many  implementations do not always drop packets with headers that it cannot recognize.  Hence, this could cause a Denial-of-Service on the target device. In addition, the type,  length, value (TLV) formatting provides the ability for headers to be very large.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002403",
     expectedState: "Configure the router to drop IPv6 packets containing a Destination Option header with option type values of 0x05 (Router Alert) or 0xC2 (Jumbo Payload) as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

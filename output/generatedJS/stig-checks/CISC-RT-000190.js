@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.10",
     stigId: "CISC-RT-000190",
-    ruleId: "RULE ID: SV-216567r856186",
-    groupId: "GROUP ID: V-216567",
+    ruleId: "SV-216567r856186",
+    groupId: "V-216567",
     severity: "HIGH",
     description: "The Cisco router must be configured to have Internet Control Message Protocol (ICMP)  redirect messages disabled on all external interfaces.  GROUP ID: V-216567  RULE ID: SV-216567r856186",
     rationale: "The ICMP supports IP traffic by relaying information about paths, routes, and network  conditions. Routers automatically send ICMP messages under a wide variety of  conditions. Redirect ICMP messages are commonly used by attackers for network  mapping and diagnosis.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002385",
     expectedState: "Disable ICMP redirects on all external interfaces as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

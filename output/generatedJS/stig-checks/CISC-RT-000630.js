@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.65",
     stigId: "CISC-RT-000630",
-    ruleId: "RULE ID: SV-216611r531085",
-    groupId: "GROUP ID: V-216611",
+    ruleId: "SV-216611r531085",
+    groupId: "V-216611",
     severity: "HIGH",
     description: "The Cisco PE router must be configured to have each Virtual Routing and Forwarding  (VRF) instance bound to the appropriate physical or logical interfaces to maintain traffic  separation between all MPLS L3VPNs.  GROUP ID: V-216611  RULE ID: SV-216611r531085",
     rationale: "The primary security model for an MPLS L3VPN infrastructure is traffic separation. The  service provider must guarantee the customer that traffic from one VPN does not leak  into another VPN or into the core, and that core traffic must not leak into any VPN.  Hence, it is imperative that each CE-facing interface can only be associated to one  VRF—that alone is the fundamental framework for traffic separation.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-000366",
     expectedState: "Configure the PE router to have each VRF bound to the appropriate physical or logical interfaces to maintain traffic separation between all MPLS L3VPNs.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

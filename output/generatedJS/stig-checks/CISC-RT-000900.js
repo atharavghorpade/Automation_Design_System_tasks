@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.87",
     stigId: "CISC-RT-000900",
-    ruleId: "RULE ID: SV-216633r856201",
-    groupId: "GROUP ID: V-216633",
+    ruleId: "SV-216633r856201",
+    groupId: "V-216633",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  only accept MSDP packets from known MSDP peers.  GROUP ID: V-216633  RULE ID: SV-216633r856201",
     rationale: "MSDP peering with customer network routers presents additional risks to the DISN  Core, whether from a rogue or misconfigured MSDP-enabled router. To guard against  an attack from malicious MSDP traffic, the receive path or interface filter for all MSDP- enabled RP routers must be configured to only accept MSDP packets from known  MSDP peers.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-002403",
     expectedState: "Configure the receive path or interface ACLs to only accept MSDP packets from known MSDP peers.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

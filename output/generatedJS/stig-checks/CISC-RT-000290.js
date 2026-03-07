@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.23",
     stigId: "CISC-RT-000290",
-    ruleId: "RULE ID: SV-216577r531085",
-    groupId: "GROUP ID: V-216577",
+    ruleId: "SV-216577r531085",
+    groupId: "V-216577",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to not be a Border Gateway Protocol  (BGP) peer to an alternate gateway service provider.  GROUP ID: V-216577  RULE ID: SV-216577r531085",
     rationale: "ISPs use BGP to share route information with other autonomous systems (i.e. other  ISPs and corporate networks). If the perimeter router was configured to BGP peer with  an ISP, NIPRnet routes could be advertised to the ISP, thereby creating a backdoor  connection from the Internet to the NIPRnet.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001414",
     expectedState: "Remove any BGP neighbors belonging to the alternate gateway service provider and configure a static route to forward Internet bound traffic to the alternate gateway as shown in the example below.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

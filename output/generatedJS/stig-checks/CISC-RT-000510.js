@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.53",
     stigId: "CISC-RT-000510",
-    ruleId: "RULE ID: SV-216599r917412",
-    groupId: "GROUP ID: V-216599",
+    ruleId: "SV-216599r917412",
+    groupId: "V-216599",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject inbound route advertisements from a  customer edge (CE) router for prefixes that are not allocated to that customer.  GROUP ID: V-216599  RULE ID: SV-216599r917412",
     rationale: "As a best practice, a service provider should only accept customer prefixes that have  been assigned to that customer and any peering autonomous systems. A multi-homed  customer with BGP speaking routers connected to the Internet or other external  networks could be breached and used to launch a prefix de-aggregation attack. Without  ingress route filtering of customers, the effectiveness of such an attack could impact the  entire IP core and its customers.",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001368",
     expectedState: "Configure the router to reject inbound route advertisements from each CE router for prefixes that are not allocated to that customer.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.42",
     stigId: "CISC-RT-000400",
-    ruleId: "RULE ID: SV-216588r531085",
-    groupId: "GROUP ID: V-216588",
+    ruleId: "SV-216588r531085",
+    groupId: "V-216588",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  transport management traffic to the Network Operations Center (NOC) via dedicated  circuit, MPLS/VPN service, or IPsec tunnel.  GROUP ID: V-216588  RULE ID: SV-216588r531085",
     rationale: "Using dedicated paths, the OOBM backbone connects the OOBM gateway routers  located at the edge of the managed network and at the NOC. Dedicated links can be  deployed using provisioned circuits or MPLS Layer 2 and Layer 3 VPN services or  implementing a secured path with gateway-to-gateway IPsec tunnels. The tunnel mode  ensures that the management traffic will be logically separated from any other traffic  traversing the same path.  Internal Only - General",
@@ -11,7 +11,7 @@ var metadata = {
     cci: "CCI-001097",
     expectedState: "Ensure that a dedicated circuit, MPLS/VPN service, or IPsec tunnel is deployed to transport management traffic between the managed network and the NOC.",
     generatedOn: "2026-03-06",
-    generatorVersion: "2.0",
+    generatorVersion: "2.1",
     benchmark: "STIG"
 };
 
