@@ -11,6 +11,7 @@ public class ArtifactManager {
             String jsDirectory,
             String benchmarkType) {
 
+                
         try {
 
             File folder = new File(jsDirectory);
