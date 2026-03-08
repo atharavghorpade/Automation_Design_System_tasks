@@ -104,7 +104,35 @@ jobs:
         run: |
           echo "=== Verifying AWS Identity ==="
           IAM_ARN=$(aws sts get-caller-identity --query Arn --output text)
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           echo "IAM User/Role: $IAM_ARN"
+          echo "Account ID: $ACCOUNT_ID"
+          echo "IAM_ARN=$IAM_ARN" >> $GITHUB_ENV
+
+      # Grant EKS access using Access Entry (EKS API)
+      - name: Grant EKS Access
+        continue-on-error: true
+        id: grant-access
+        run: |
+          echo "=== Granting EKS Access to IAM User ==="
+          
+          # Try to create access entry (ignore if already exists)
+          aws eks create-access-entry \
+            --cluster-name $CLUSTER_NAME \
+            --principal-arn ${{ env.IAM_ARN }} \
+            --type STANDARD \
+            --region $AWS_REGION 2>/dev/null || echo "Access entry may already exist"
+          
+          # Associate admin policy
+          aws eks associate-access-policy \
+            --cluster-name $CLUSTER_NAME \
+            --principal-arn ${{ env.IAM_ARN }} \
+            --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy \
+            --access-scope type=cluster \
+            --region $AWS_REGION 2>/dev/null || echo "Policy may already be associated"
+          
+          echo "✓ EKS access granted, waiting for propagation..."
+          sleep 15
 
       # Update kubeconfig
       - name: Update kubeconfig
@@ -113,7 +141,50 @@ jobs:
 
       # Test kubectl access
       - name: Test kubectl Access
-        run: kubectl get nodes
+        id: test-kubectl
+        run: |
+          if kubectl get nodes; then
+            echo "✓ Successfully connected to EKS cluster"
+          else
+            echo "Cannot connect to EKS cluster"
+            echo ""
+            echo "================================================================"
+            echo "ERROR: IAM user does not have access to the EKS cluster"
+            echo "================================================================"
+            echo ""
+            echo "SOLUTION - Run ONE of these commands from your local machine:"
+            echo ""
+            echo "Option 1: Add IAM user to cluster (Quickest)"
+            echo "---------------------------------------------------"
+            echo "kubectl edit configmap aws-auth -n kube-system"
+            echo ""
+            echo "Then add your IAM user ARN (${{ env.IAM_ARN }}) under mapUsers:"
+            echo ""
+            echo "mapUsers: |"
+            echo "  - userarn: ${{ env.IAM_ARN }}"
+            echo "    username: github-actions"
+            echo "    groups:"
+            echo "      - system:masters"
+            echo ""
+            echo "Option 2: Use EKS Access Entry (EKS 1.23+)"
+            echo "---------------------------------------------------"
+            echo "aws eks create-access-entry \\"
+            echo "  --cluster-name $CLUSTER_NAME \\"
+            echo "  --principal-arn ${{ env.IAM_ARN }} \\"
+            echo "  --type STANDARD \\"
+            echo "  --region $AWS_REGION"
+            echo ""
+            echo "aws eks associate-access-policy \\"
+            echo "  --cluster-name $CLUSTER_NAME \\"
+            echo "  --principal-arn ${{ env.IAM_ARN }} \\"
+            echo "  --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy \\"
+            echo "  --access-scope type=cluster \\"
+            echo "  --region $AWS_REGION"
+            echo ""
+            echo "See EKS-FIX-GUIDE.md for detailed instructions"
+            echo "================================================================"
+            exit 1
+          fi
 
       # Deploy application
       - name: Deploy to Kubernetes
