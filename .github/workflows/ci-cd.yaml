@@ -46,6 +46,28 @@ jobs:
           name: compliance-artifacts
           path: output/artifacts
 
+      # Upload target directory for Docker build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: target/
+
+  push:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Download build artifacts
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: target/
+
       # Login to Docker Hub
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -62,7 +84,7 @@ jobs:
         run: docker push dhairyashil8416/cicd:latest
 
   deploy:
-    needs: build
+    needs: push
     runs-on: ubuntu-latest
 
     steps:
