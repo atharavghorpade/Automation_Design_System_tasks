@@ -87,6 +87,7 @@ public class CIS_checkGenerator {   // Generator for CIS Benchmark checks in Jav
                 generatorVersion: "2.1",
                 benchmark: "CIS"
             };
+            // -----------------------------------------------------------
 
             function check(config) {
 
