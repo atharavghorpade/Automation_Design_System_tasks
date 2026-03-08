@@ -77,11 +77,15 @@ jobs:
 
       # Build Docker image
       - name: Build Docker Image
-        run: docker build -t dhairyashil8416/cicd:latest .
+        run: |
+          docker build -t dhairyashil8416/cicd:latest .
+          docker build -t dhairyashil8416/cicd:${{ github.sha }} .
 
       # Push Docker image
       - name: Push Docker Image
-        run: docker push dhairyashil8416/cicd:latest
+        run: |
+          docker push dhairyashil8416/cicd:latest
+          docker push dhairyashil8416/cicd:${{ github.sha }}
 
   deploy:
     needs: push
@@ -190,48 +194,33 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           echo "=== Deploying to Kubernetes ==="
-          sed -i 's|IMAGE_TAG|dhairyashil8416/cicd:latest|g' deployment.yaml
-          kubectl apply -f deployment.yaml
           
-          echo ""
-          echo "=== Deployment Applied ==="
+          IMAGE_TAG="dhairyashil8416/cicd:${{ github.sha }}"
+          echo "Image: $IMAGE_TAG"
+          
+          # Apply deployment if doesn't exist
+          if ! kubectl get deployment automation-design-system > /dev/null 2>&1; then
+            sed "s|IMAGE_TAG|$IMAGE_TAG|g" deployment.yaml | kubectl apply -f -
+          else
+            # Update existing deployment with new image
+            kubectl set image deployment/automation-design-system automation-app=$IMAGE_TAG
+          fi
+          
           kubectl get deployment automation-design-system
           
           echo ""
-          echo "=== Waiting for Deployment (10 minutes timeout) ==="
-          if kubectl rollout status deployment/automation-design-system --timeout=10m; then
-            echo ""
-            echo "=== ✓ Deployment Successful ==="
+          echo "=== Waiting for Rollout ==="
+          if kubectl rollout status deployment/automation-design-system --timeout=5m; then
+            echo "✓ Deployment Successful"
             kubectl get pods -l app=automation-design-system
-            echo ""
-            echo "=== Application Logs (last 30 lines) ==="
+            
+            sleep 5
             POD_NAME=$(kubectl get pods -l app=automation-design-system -o jsonpath='{.items[0].metadata.name}')
-            kubectl logs $POD_NAME --tail=30
+            kubectl logs $POD_NAME --tail=20 || true
           else
-            echo ""
-            echo "=== ❌ Deployment Failed - Debugging Information ==="
-            echo ""
-            echo "--- Deployment Description ---"
+            echo "❌ Deployment Failed"
             kubectl describe deployment automation-design-system
-            echo ""
-            echo "--- Pod Status ---"
             kubectl get pods -l app=automation-design-system
-            echo ""
-            echo "--- Pod Details ---"
-            kubectl describe pods -l app=automation-design-system
-            echo ""
-            echo "--- Pod Logs (last 50 lines) ---"
-            POD_NAME=$(kubectl get pods -l app=automation-design-system -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || echo "")
-            if [ -n "$POD_NAME" ]; then
-              echo "Logs from pod: $POD_NAME"
-              kubectl logs $POD_NAME --tail=50 || echo "Could not fetch logs"
-            else
-              echo "No pods found"
-            fi
-            echo ""
-            echo "=== Troubleshooting Tips ==="
-            echo "1. Check if the Docker image exists: docker pull dhairyashil8416/cicd:latest"
-            echo "2. Verify your cluster has enough resources"
-            echo "3. Check pod events above for specific error messages"
+            kubectl describe pods -l app=automation-design-system | tail -50
             exit 1
           fi

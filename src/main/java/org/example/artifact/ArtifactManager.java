@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 public class ArtifactManager {
 
+    
     public static void generateArtifactsFromJS(
             String jsDirectory,
             String benchmarkType) { // e.g., "check" or "exploit"
