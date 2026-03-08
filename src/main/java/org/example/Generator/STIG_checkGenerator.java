@@ -1,12 +1,12 @@
 package org.example.Generator;
 
-import org.example.model.STIG_Benchmark;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+
+import org.example.model.STIG_Benchmark;
 
 public class STIG_checkGenerator {
 
@@ -18,7 +18,7 @@ public class STIG_checkGenerator {
             folder.mkdirs();
         }
 
-        for (STIG_Benchmark rule : rules) {
+        for (STIG_Benchmark rule : rules) {  // Generate a JS file for each STIG rule
 
             String fileName = "output/generatedJS/stig-checks/"
                     + safeFileName(rule.getGroupId()) + ".js";
