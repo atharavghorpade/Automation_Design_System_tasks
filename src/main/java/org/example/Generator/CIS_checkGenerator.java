@@ -15,7 +15,7 @@ public class CIS_checkGenerator {   // Generator for CIS Benchmark checks in Jav
     public static void generateChecks(List<CIS_Benchmark> rules) throws Exception {
 
         File folder = new File("output/generatedJS/cis-checks");
-        if (!folder.exists()) {
+        if (!folder.exists()) {  // Ensure output directory exists
             folder.mkdirs();
         }
 
