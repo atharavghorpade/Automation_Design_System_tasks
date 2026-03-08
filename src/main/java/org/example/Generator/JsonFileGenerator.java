@@ -1,8 +1,5 @@
 package org.example.Generator;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 public class JsonFileGenerator {
 
     private static final String SCHEMA_VERSION = "1.0";
@@ -19,7 +19,7 @@ public class JsonFileGenerator {
     public static <T> void generateJson(List<T> data, String fileName) throws Exception {
 
         // Validate data
-        if (data == null || data.isEmpty()) {
+        if (data == null || data.isEmpty()) {  // Added null check for data list
             throw new IllegalArgumentException("Metadata list cannot be null or empty.");
         }
 
