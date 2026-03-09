@@ -14,7 +14,7 @@ public class CIS_Benchmark {
     private String level;          // REQUIRED (1 or 2)
     private String profile;        // REQUIRED
     private String description;
-    private String rationale;
+    private String rationale;  // Optional but often present
     private String impact;
     private String audit;          // REQUIRED
     private String remediation;    // REQUIRED
