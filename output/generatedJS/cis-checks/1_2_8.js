@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Configure device timeout (10 minutes or less) to disconnect sessions after a fixed idle time. hostname(config)#line vty {line_number} [ending_line_number] hostname(config-line)#exec-timeout <<span>timeout_in_minutes> <timeout_in_seconds</span>>",
     defaultValue: "",
     expectedState: "Configure device timeout (10 minutes or less) to disconnect sessions after a fixed idle time.",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
     generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

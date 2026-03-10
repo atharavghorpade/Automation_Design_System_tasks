@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Configure the router to use SSH version 2 hostname(config)#ip ssh version 2",
     defaultValue: "SSH is not enabled by default. When enabled, SSH operates in compatibility mode (versions 1 and 2 supported).",
     expectedState: "SSH is not enabled by default.",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
     generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Adding Users to the KDC Database Hostname# ank {username@REALM} Hostname# ank {username/instance@REALM Creating SRVTABs on the KDC Hostname# ark {SERVICE/HOSTNAME@REALM} Make entries for all network services on all Kerberized hosts that use this KDC for authentication. Defining a Kerberos Realm Hostname#(config)kerberos local-realm {kerberos-realm} Hostname#(config)kerberos server {kerberos-realm {hostname | ip-address}} {port-number} Hostname#(config)kerberos realm {dns-domain | host} {kerberos-realm}",
     defaultValue: "no kerberos enabled",
     expectedState: "no kerberos enabled",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
     generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

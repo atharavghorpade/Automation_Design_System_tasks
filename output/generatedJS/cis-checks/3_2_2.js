@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Apply the access-group for the external (untrusted) interface hostname(config)#interface {external_interface} hostname(config-if)#ip access-group {name | number} in",
     defaultValue: "No access-group defined Page 182",
     expectedState: "No access-group defined Page 182",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
     generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

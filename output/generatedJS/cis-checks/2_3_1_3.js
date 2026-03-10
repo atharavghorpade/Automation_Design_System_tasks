@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Configure the NTP trusted key using the following command hostname(config)#ntp trusted-key {ntp_key_id}",
     defaultValue: "Authentication of the identity of the system is disabled.",
     expectedState: "Authentication of the identity of the system is disabled.",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
     generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
