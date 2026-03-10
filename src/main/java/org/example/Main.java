@@ -3,19 +3,15 @@ package org.example;
 import java.io.File;
 import java.util.List;
 
-import org.example.model.ExpectedResult;
-import org.example.model.ValidationResult;
-
-
 import org.example.Extractor.CISMetadataExtractor;
 import org.example.Extractor.STIGMetadataExtractor;
-import org.example.Generator.STIG_checkGenerator;
 import org.example.Generator.CIS_checkGenerator;
 import org.example.Generator.JsonFileGenerator;
+import org.example.Generator.STIG_checkGenerator;
+import org.example.artifact.ArtifactManager;
 import org.example.model.CIS_Benchmark;
 import org.example.model.STIG_Benchmark;
 import org.example.runner.JSValidationRunner;
-import org.example.artifact.ArtifactManager;   // added
 
 public class Main {  
 
@@ -23,8 +19,8 @@ public class Main {
 
         try {
 
-            File cisFile = PdfLoader.getPdfFileIfExists("input/cis");
-            File stigFile = PdfLoader.getPdfFileIfExists("input/stig");
+            File cisFile = PdfLoader.getPdfFileIfExists("input/cis"); // Assuming this method checks for the existence of a PDF file in the specified directory and returns it if found.
+            File stigFile = PdfLoader.getPdfFileIfExists("input/stig"); // Same as above but for the STIG directory.
 
             if (cisFile != null) {
 
