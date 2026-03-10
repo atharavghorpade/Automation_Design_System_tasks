@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable the bootp server. hostname(config)#ip dhcp bootp ignore",
     defaultValue: "Enabled",
     expectedState: "Enabled",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

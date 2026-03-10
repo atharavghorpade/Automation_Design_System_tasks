@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure management lines to require login using the default or a named AAA authentication list. This configuration must be set individually for all line types. hostname(config)#line vty {line-number} [<em>ending-line-number] hostname(config-line)#login authentication {default | aaa_list_name}",
     defaultValue: "Login authentication is not enabled. Uses the default set with aaa authentication login.",
     expectedState: "Uses the default set with aaa authentication login.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

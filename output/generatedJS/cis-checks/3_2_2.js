@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Apply the access-group for the external (untrusted) interface hostname(config)#interface {external_interface} hostname(config-if)#ip access-group {name | number} in",
     defaultValue: "No access-group defined Page 182",
     expectedState: "No access-group defined Page 182",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

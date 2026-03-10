@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure NTP authentication: hostname(config)#ntp authenticate",
     defaultValue: "NTP authentication is not enabled.",
     expectedState: "NTP authentication is not enabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

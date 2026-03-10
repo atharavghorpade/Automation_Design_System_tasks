@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure AAA accounting for commands. hostname(config)#aaa accounting commands 15 {default | list-name | guarantee- first} {start-stop | stop-only | none} {radius | group group-name}",
     defaultValue: "AAA accounting is disabled. Additional Information: Valid privilege level entries are integers from 0 through 15. Page 26 CIS Controls: Controls Version Control IG 1 IG 2 IG 3 v8",
     expectedState: "AAA accounting is disabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

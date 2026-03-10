@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure remote management access control restrictions for all VTY lines. hostname(config)#line vty <line-number> <ending-line-number> hostname(config-line)# access-class <vty_acl_number> in",
     defaultValue: "",
     expectedState: "Configure remote management access control restrictions for all VTY lines.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

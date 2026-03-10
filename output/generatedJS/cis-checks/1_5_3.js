@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable the default SNMP community string \"public\" hostname(config)#no snmp-server community {public}",
     defaultValue: "",
     expectedState: "Disable the default SNMP community string \"public\" hostname(config)#no snmp-server community {public}",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable the inbound connections on the auxiliary port. hostname(config)#line aux 0 hostname(config-line)#transport input none",
     defaultValue: "",
     expectedState: "Disable the inbound connections on the auxiliary port.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

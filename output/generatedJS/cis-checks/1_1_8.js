@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure AAA accounting for EXEC shell session. hostname(config)#aaa accounting exec {default | list-name | guarantee-first} {start-stop | stop-only | none} {radius | group group-name}",
     defaultValue: "AAA accounting is not enabled.",
     expectedState: "AAA accounting is not enabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

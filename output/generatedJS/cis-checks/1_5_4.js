@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable SNMP write access. hostname(config)#no snmp-server community {<em>write_community_string</em>}",
     defaultValue: "",
     expectedState: "Disable SNMP write access.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

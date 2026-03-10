@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Bind the NTP service to the loopback interface. hostname(config)#ntp source loopback {<em>loopback_interface_number}</em>",
     defaultValue: "Source address is determined by the outgoing interface.",
     expectedState: "Source address is determined by the outgoing interface.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

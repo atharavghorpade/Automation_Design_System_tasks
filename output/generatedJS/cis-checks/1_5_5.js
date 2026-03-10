@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure authorized SNMP community string and restrict access to authorized management systems. hostname(config)#snmp-server community <<em>community_string</em>> ro {<em>snmp_access-list_number | <span>snmp_access-list_name</span></em><span>}</span>",
     defaultValue: "No ACL is set for SNMP Page 85",
     expectedState: "No ACL is set for SNMP Page 85",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable source routing. hostname(config)#no ip source-route",
     defaultValue: "Enabled by default",
     expectedState: "Enabled by default",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

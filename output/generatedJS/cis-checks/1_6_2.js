@@ -9,10 +9,11 @@ var metadata = {
     remediation: "How to Configure AutoSecure Hostname#(config)auto secure {management | forwarding} {no-interact | full} {ntp | login | ssh |firewall | tcp-intercept} Configuring Enhanced Security Access to the Router Hostname#(config)enable password {password | [encryption-type ] encrypted- password } Hostname#security authentication failure rate {**threshold-rate**} log",
     defaultValue: "AutoSecure not configured Page 101",
     expectedState: "AutoSecure not configured Page 101",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

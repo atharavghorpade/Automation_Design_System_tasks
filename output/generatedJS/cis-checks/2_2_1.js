@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Enable system logging. hostname(config)#archive hostname(config-archive)#log config hostname(config-archive-log-cfg)#logging enable hostname(config-archive-log-cfg)#end",
     defaultValue: "Logging is not enabled/",
     expectedState: "Logging is not enabled/",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

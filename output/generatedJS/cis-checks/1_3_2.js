@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure the device so a login banner presented to a user attempting to access the device. hostname(config)#banner login c Enter TEXT message. End with the character 'c'. <banner-text> c",
     defaultValue: "No banner is set by default",
     expectedState: "No banner is set by default",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-09",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 
