@@ -11,8 +11,10 @@ RUN mvn dependency:go-offline -B
 
 # Copy source code and build
 COPY src ./src
-COPY input ./input
 RUN mvn clean package -DskipTests
+
+# Copy input directory (without PDFs for now, can be mounted as volume)
+COPY input ./input
 
 # Stage 2: Runtime stage
 FROM eclipse-temurin:21-jre-alpine
@@ -45,5 +47,6 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 # Set JVM options
 ENV JAVA_OPTS="-Xms512m -Xmx2048m -XX:+UseG1GC -XX:+UseContainerSupport"
 
-# Run the application
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
+# Run the application and keep container alive
+# The application processes files then exits, so we need to keep it running
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar && echo 'Processing complete. Container staying alive...' && tail -f /dev/null"]

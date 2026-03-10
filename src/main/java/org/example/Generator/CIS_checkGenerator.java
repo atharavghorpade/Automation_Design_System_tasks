@@ -1,7 +1,5 @@
 package org.example.Generator;
 
-import org.example.model.CIS_Benchmark;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.time.LocalDate;
@@ -9,13 +7,15 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.example.model.CIS_Benchmark;
 
-public class CIS_checkGenerator {  
+
+public class CIS_checkGenerator {   // Generator for CIS Benchmark checks in JavaScript format
 
     public static void generateChecks(List<CIS_Benchmark> rules) throws Exception {
 
         File folder = new File("output/generatedJS/cis-checks");
-        if (!folder.exists()) {
+        if (!folder.exists()) {  // Ensure output directory exists
             folder.mkdirs();
         }
 
@@ -87,6 +87,7 @@ public class CIS_checkGenerator {
                 generatorVersion: "2.1",
                 benchmark: "CIS"
             };
+            // -----------------------------------------------------------
 
             function check(config) {
 
@@ -261,5 +262,3 @@ public class CIS_checkGenerator {
                 .replace(" ", "_");
     }
 }
-
-//This is end 

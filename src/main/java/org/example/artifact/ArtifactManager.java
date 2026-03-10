@@ -7,10 +7,13 @@ import java.nio.file.Paths;
 
 public class ArtifactManager {
 
+
     public static void generateArtifactsFromJS(
             String jsDirectory,
-            String benchmarkType) {
+            String benchmarkType) { // e.g., "check" or "exploit"
 
+       
+            
         try {
 
             File folder = new File(jsDirectory);

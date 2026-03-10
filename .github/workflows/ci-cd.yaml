@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'src/main/java/org/example/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/main/java/org/example/**'
 
 env:
   AWS_REGION: ap-south-1
@@ -17,19 +24,36 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
+      # Setup Java environment
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          distribution: 'temurin'
+          java-version: '21'
 
-      - name: Build Docker Image
-        run: docker build -t dhairyashil8416/cicd:latest .
+      # Build Maven project
+      - name: Build Project
+        run: mvn clean package
 
-      - name: Push Docker Image
-        run: docker push dhairyashil8416/cicd:latest
+      # Run the system to generate compliance artifacts
+      - name: Run Compliance System
+        run: mvn exec:java -Dexec.mainClass="org.example.Main"
 
-  deploy:
+      # Upload generated artifacts
+      - name: Upload Compliance Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compliance-artifacts
+          path: output/artifacts
+
+      # Upload target directory for Docker build
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: target/
+
+  push:
     needs: build
     runs-on: ubuntu-latest
 
@@ -37,71 +61,166 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Download build artifacts
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: target/
+
+      # Login to Docker Hub
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Build Docker image
+      - name: Build Docker Image
+        run: |
+          docker build -t dhairyashil8416/cicd:latest .
+          docker build -t dhairyashil8416/cicd:${{ github.sha }} .
+
+      # Push Docker image
+      - name: Push Docker Image
+        run: |
+          docker push dhairyashil8416/cicd:latest
+          docker push dhairyashil8416/cicd:${{ github.sha }}
+
+  deploy:
+    needs: push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Configure AWS credentials
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+          aws-region: ${{ env.AWS_REGION }}
 
+      # Verify AWS identity
       - name: Verify AWS Identity
         run: |
           echo "=== Verifying AWS Identity ==="
           IAM_ARN=$(aws sts get-caller-identity --query Arn --output text)
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
           echo "IAM User/Role: $IAM_ARN"
-          echo ""
-          echo "=== Checking EKS Cluster Access ==="
-          if ! aws eks describe-cluster --name dev-cluster --region ap-south-1 > /dev/null 2>&1; then
-            echo "ERROR: Cannot access EKS cluster"
-            echo "Please ensure IAM user has 'eks:DescribeCluster' permission"
-            exit 1
-          fi
-          echo "✓ EKS cluster accessible"
-          echo ""
-          echo "If kubectl fails in next steps, add this ARN to aws-auth ConfigMap:"
-          echo "  $IAM_ARN"
+          echo "Account ID: $ACCOUNT_ID"
+          echo "IAM_ARN=$IAM_ARN" >> $GITHUB_ENV
 
+      # Grant EKS access using Access Entry (EKS API)
+      - name: Grant EKS Access
+        continue-on-error: true
+        id: grant-access
+        run: |
+          echo "=== Granting EKS Access to IAM User ==="
+          
+          # Try to create access entry (ignore if already exists)
+          aws eks create-access-entry \
+            --cluster-name $CLUSTER_NAME \
+            --principal-arn ${{ env.IAM_ARN }} \
+            --type STANDARD \
+            --region $AWS_REGION 2>/dev/null || echo "Access entry may already exist"
+          
+          # Associate admin policy
+          aws eks associate-access-policy \
+            --cluster-name $CLUSTER_NAME \
+            --principal-arn ${{ env.IAM_ARN }} \
+            --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy \
+            --access-scope type=cluster \
+            --region $AWS_REGION 2>/dev/null || echo "Policy may already be associated"
+          
+          echo "✓ EKS access granted, waiting for propagation..."
+          sleep 15
+
+      # Update kubeconfig
       - name: Update kubeconfig
         run: |
-          echo "=== Updating kubeconfig ==="
-          aws eks update-kubeconfig --name dev-cluster --region ap-south-1 --alias dev-cluster
-          echo "✓ Kubeconfig updated"
+          aws eks update-kubeconfig --name $CLUSTER_NAME --region $AWS_REGION
 
+      # Test kubectl access
       - name: Test kubectl Access
-        continue-on-error: true
-        id: kubectl_test
+        id: test-kubectl
         run: |
-          echo "=== Testing kubectl access ==="
-          if kubectl get nodes > /dev/null 2>&1; then
-            echo "✓ kubectl authentication successful"
-            exit 0
+          if kubectl get nodes; then
+            echo "✓ Successfully connected to EKS cluster"
           else
-            echo "kubectl cannot authenticate - IAM user not in aws-auth ConfigMap"
+            echo "Cannot connect to EKS cluster"
             echo ""
-            echo "SOLUTION: Run this locally with cluster admin access:"
-            echo "  kubectl edit configmap aws-auth -n kube-system"
+            echo "================================================================"
+            echo "ERROR: IAM user does not have access to the EKS cluster"
+            echo "================================================================"
             echo ""
-            echo "Add under 'mapUsers:':"
-            IAM_ARN=$(aws sts get-caller-identity --query Arn --output text)
-            echo "  - userarn: $IAM_ARN"
+            echo "SOLUTION - Run ONE of these commands from your local machine:"
+            echo ""
+            echo "Option 1: Add IAM user to cluster (Quickest)"
+            echo "---------------------------------------------------"
+            echo "kubectl edit configmap aws-auth -n kube-system"
+            echo ""
+            echo "Then add your IAM user ARN (${{ env.IAM_ARN }}) under mapUsers:"
+            echo ""
+            echo "mapUsers: |"
+            echo "  - userarn: ${{ env.IAM_ARN }}"
             echo "    username: github-actions"
             echo "    groups:"
             echo "      - system:masters"
             echo ""
-            echo "See SOLUTION.md in the repository for detailed instructions"
+            echo "Option 2: Use EKS Access Entry (EKS 1.23+)"
+            echo "---------------------------------------------------"
+            echo "aws eks create-access-entry \\"
+            echo "  --cluster-name $CLUSTER_NAME \\"
+            echo "  --principal-arn ${{ env.IAM_ARN }} \\"
+            echo "  --type STANDARD \\"
+            echo "  --region $AWS_REGION"
+            echo ""
+            echo "aws eks associate-access-policy \\"
+            echo "  --cluster-name $CLUSTER_NAME \\"
+            echo "  --principal-arn ${{ env.IAM_ARN }} \\"
+            echo "  --policy-arn arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy \\"
+            echo "  --access-scope type=cluster \\"
+            echo "  --region $AWS_REGION"
+            echo ""
+            echo "See EKS-FIX-GUIDE.md for detailed instructions"
+            echo "================================================================"
             exit 1
           fi
 
+      # Deploy application
       - name: Deploy to Kubernetes
-        if: steps.kubectl_test.outcome == 'success'
         run: |
           echo "=== Deploying to Kubernetes ==="
-          sed -i 's|IMAGE_TAG|dhairyashil8416/cicd:latest|g' deployment.yaml
-          kubectl apply -f deployment.yaml
+          
+          IMAGE_TAG="dhairyashil8416/cicd:${{ github.sha }}"
+          echo "Image: $IMAGE_TAG"
+          
+          # Apply deployment if doesn't exist
+          if ! kubectl get deployment automation-design-system > /dev/null 2>&1; then
+            sed "s|IMAGE_TAG|$IMAGE_TAG|g" deployment.yaml | kubectl apply -f -
+          else
+            # Update existing deployment with new image
+            kubectl set image deployment/automation-design-system automation-app=$IMAGE_TAG
+          fi
+          
+          kubectl get deployment automation-design-system
+          
           echo ""
-          echo "=== Waiting for Deployment ==="
-          kubectl rollout status deployment/automation-design-system --timeout=5m
-          echo ""
-          echo "=== Deployment Status ==="
-          kubectl get pods -l app=automation-design-system
-          kubectl get svc automation-design-system 
+          echo "=== Waiting for Rollout ==="
+          if kubectl rollout status deployment/automation-design-system --timeout=5m; then
+            echo "✓ Deployment Successful"
+            kubectl get pods -l app=automation-design-system
+            
+            sleep 5
+            POD_NAME=$(kubectl get pods -l app=automation-design-system -o jsonpath='{.items[0].metadata.name}')
+            kubectl logs $POD_NAME --tail=20 || true
+          else
+            echo "❌ Deployment Failed"
+            kubectl describe deployment automation-design-system
+            kubectl get pods -l app=automation-design-system
+            kubectl describe pods -l app=automation-design-system | tail -50
+            exit 1
+          fi

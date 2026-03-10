@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.34",
     stigId: "CISC-RT-000391",
-    ruleId: "RULE ID: SV-230044r533005",
-    groupId: "GROUP ID: V-230044",
+    ruleId: "SV-230044r533005",
+    groupId: "V-230044",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to suppress Router Advertisements on  all external IPv6-enabled interfaces.  GROUP ID: V-230044  RULE ID: SV-230044r533005",
     rationale: "Many of the known attacks in stateless autoconfiguration are defined in RFC 3756 were  present in IPv4 ARP attacks. To mitigate these vulnerabilities, links that have no hosts  connected such as the interface connecting to external gateways must be configured to  suppress router advertisements.",

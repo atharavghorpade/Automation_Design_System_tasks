@@ -12,8 +12,10 @@ import java.util.regex.Pattern;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
-import org.example.model.CIS_Benchmark;
-  
+import org.example.model.CIS_Benchmark; // Data model representing a single CIS Benchmark rule and its metadata
+
+
+
 public class CISMetadataExtractor {
 
     private static final List<String> SECTION_HEADERS = Arrays.asList(
