@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure the appropriate interface(s) for Message Digest authentication hostname(config)#interface {<em>interface_name</em>} hostname(config-if)#ip ospf message-digest-key {<em>ospf_md5_key-id</em>} md5 {<em>ospf_md5_key</em>}",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

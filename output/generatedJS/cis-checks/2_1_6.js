@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Enable TCP keepalives-in service: hostname(config)#service tcp-keepalives-in",
     defaultValue: "Disabled by default.",
     expectedState: "Disabled by default.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

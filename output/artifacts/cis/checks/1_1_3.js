@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure AAA authentication method(s) for enable authentication. hostname(config)#aaa authentication enable default {method1} enable",
     defaultValue: "By default, fallback to the local database is disabled.",
     expectedState: "By default, fallback to the local database is disabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

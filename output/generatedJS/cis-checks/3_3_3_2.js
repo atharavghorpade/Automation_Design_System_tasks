@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure the key number. hostname(config-keychain)#key {<em>key-number</em>}",
     defaultValue: "",
     expectedState: "Configure the key number.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

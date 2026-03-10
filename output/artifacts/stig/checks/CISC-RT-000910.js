@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.88",
     stigId: "CISC-RT-000910",
-    ruleId: "RULE ID: SV-216634r856202",
-    groupId: "GROUP ID: V-216634",
+    ruleId: "SV-216634r856202",
+    groupId: "V-216634",
     severity: "HIGH",
     description: "The Cisco Multicast Source Discovery Protocol (MSDP) router must be configured to  authenticate all received MSDP packets.  GROUP ID: V-216634  RULE ID: SV-216634r856202",
     rationale: "MSDP peering with customer network routers presents additional risks to the core,  whether from a rogue or misconfigured MSDP-enabled router. MSDP password  authentication is used to validate each segment sent on the TCP connection between  MSDP peers, protecting the MSDP session against the threat of spoofed packets being  injected into the TCP connection stream.",

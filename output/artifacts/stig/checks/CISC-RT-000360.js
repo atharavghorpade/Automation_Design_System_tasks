@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.30",
     stigId: "CISC-RT-000360",
-    ruleId: "RULE ID: SV-216584r856189",
-    groupId: "GROUP ID: V-216584",
+    ruleId: "SV-216584r856189",
+    groupId: "V-216584",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to have Link Layer Discovery Protocol  (LLDP) disabled on all external interfaces.  GROUP ID: V-216584  RULE ID: SV-216584r856189",
     rationale: "LLDP is a neighbor discovery protocol used to advertise device capabilities,  configuration information, and device identity. LLDP is media- and protocol-independent  as it runs over layer 2; therefore, two network nodes that support different layer 3  protocols can still learn about each other. Allowing LLDP messages to reach external  network nodes provides an attacker a method to obtain information of the network  infrastructure that can be useful to plan an attack.",

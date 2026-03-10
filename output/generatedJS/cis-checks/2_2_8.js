@@ -9,10 +9,11 @@ var metadata = {
     remediation: "hostname(config)#login on-failure log hostname(config)#login on-success log hostname(config)#end",
     defaultValue: "",
     expectedState: "hostname(config)#login on-failure log hostname(config)#login on-success log hostname(config)#end",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

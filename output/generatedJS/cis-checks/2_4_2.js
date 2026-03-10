@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Bind AAA services to the loopback interface. Hostname(config)#ip radius source-interface loopback {loopback_interface_number} or Hostname(config)#aaa group server tacacs+ {group_name} hostname(config-sg- tacacs+)#ip tacacs source-interface {loopback_interface_number}",
     defaultValue: "",
     expectedState: "Bind AAA services to the loopback interface.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

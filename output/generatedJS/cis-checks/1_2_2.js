@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Apply SSH to transport input on all VTY management lines hostname(config)#line vty <line-number> <ending-line-number> hostname(config-line)#transport input ssh",
     defaultValue: "",
     expectedState: "Apply SSH to transport input on all VTY management lines hostname(config)#line vty <line-number> <ending-line-number> hostname(config-line)#transport input ssh",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

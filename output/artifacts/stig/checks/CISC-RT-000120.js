@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.5",
     stigId: "CISC-RT-000120",
-    ruleId: "RULE ID: SV-216560r929043",
-    groupId: "GROUP ID: V-216560",
+    ruleId: "SV-216560r929043",
+    groupId: "V-216560",
     severity: "HIGH",
     description: "The Cisco router must be configured to protect against or limit the effects of denial-of- service (DoS) attacks by employing control plane protection.  GROUP ID: V-216560  RULE ID: SV-216560r929043",
     rationale: "The Route Processor (RP) is critical to all network operations because it is the  component used to build all forwarding paths for the data plane via control plane  processes. It is also instrumental with ongoing network management functions that keep  the routers and links available for providing network services. Any disruption to the RP  or the control and management planes can result in mission-critical network outages.  A DoS attack targeting the RP can result in excessive CPU and memory utilization. To  maintain network stability and RP security, the router must be able to handle specific  control plane and management plane traffic that is destined to the RP. In the past, one  method of filtering was to use ingress filters on forwarding interfaces to filter both  forwarding path and receiving path traffic, as well as limiting traffic destined to the  device. However, this method does not scale well as the number of interfaces grows  and the size of the ingress filters grows. Control plane policing increases the security of  routers and multilayer switches by protecting the RP from unnecessary or malicious  traffic. Filtering and rate limiting the traffic flow of control plane packets can be  implemented to protect routers against reconnaissance and DoS attacks, allowing the  control plane to maintain packet forwarding and protocol states despite an attack or  heavy load on the router or multilayer switch.  Internal Only - General",

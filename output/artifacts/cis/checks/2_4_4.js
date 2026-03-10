@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Bind the TFTP client to the loopback interface. hostname(config)#ip tftp source-interface loopback {<em>loobpback_interface_number</em>}",
     defaultValue: "The address of the closest interface to the destination is selected as the source address.",
     expectedState: "The address of the closest interface to the destination is selected as the source address.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.2",
     stigId: "CISC-RT-000050",
-    ruleId: "RULE ID: SV-216555r929040",
-    groupId: "GROUP ID: V-216555",
+    ruleId: "SV-216555r929040",
+    groupId: "V-216555",
     severity: "HIGH",
     description: "The Cisco router must be configured to enable routing protocol authentication using  FIPS 198-1 algorithms with keys not exceeding 180 days of lifetime.  GROUP ID: V-216555  RULE ID: SV-216555r929040",
     rationale: "A rogue router could send a fictitious routing update to convince a site's perimeter router  to send traffic to an incorrect or even a rogue destination. This diverted traffic could be  analyzed to learn confidential information about the site's network or used to disrupt the  network's ability to communicate with other networks. This is known as a \"traffic  attraction attack\" and is prevented by configuring neighbor router authentication using  FIPS 198-1 algorithms for routing updates. If the keys used for authentication are  guessed, the malicious user could create havoc within the network by advertising  incorrect routes and redirecting traffic. Some routing protocols allow the use of key  chains for authentication. A key chain is a set of keys that is used in succession, with  each having a lifetime of no more than 180 days. Changing the keys frequently reduces  the risk of them eventually being guessed. If a time period occurs during which no key is  activated, neighbor authentication cannot occur, and therefore routing updates will fail.  Internal Only - General",

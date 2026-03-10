@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure ACL for private source address restrictions from external networks. Page 180 hostname(config)#ip access-list extended {<span><em>name | number</em>} </span><span>hostname(config-nacl)#deny ip {</span><em>internal_networks</em>} any log hostname(config<span>-nacl</span>)#deny ip 127.0.0.0 0.255.255.255 any log hostname(config<span>-nacl</span>)#deny ip 10.0.0.0 0.255.255.255 any log hostname(config<span>-nacl</span>)#deny ip 0.0.0.0 0.255.255.255 any log hostname(config<span>-nacl</span>)#deny ip 172.16.0.0 0.15.255.255 any log hostname(config<span>-nacl</span>)#deny ip 192.168.0.0 0.0.255.255 any log hostname(config<span>-nacl</span>)#deny ip 192.0.2.0 0.0.0.255 any log hostname(config<span>-nacl</span>)#deny ip 169.254.0.0 0.0.255.255 any log hostname(config<span>-nacl</span>)#deny ip 224.0.0.0 31.255.255.255 any log hostname(config<span>-nacl</span>)#deny ip host 255.255.255.255 any log hostname(config<span>-nacl</span>)#permit {protocol} {source_ip} {source_mask} {destination} {destination_mask} log hostname(config<span>-nacl</span>)#deny any any log hostname(config)#interface <external_<em>interface</em>> hostname(config-if)#access-group <<em>access-list</em>> in",
     defaultValue: "No access list defined",
     expectedState: "No access list defined",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

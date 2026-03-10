@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configuring the Authentication Rule and Interfaces Hostname#(config)ip admission name {Name} proxy http Hostname#(config)interface {type slot/port} Hostname#(config)ip access-group {Name} Hostname#(config)ip admission name Hostname#(config)ip admission max-login-attempts {number} 2 Control Plane The control plane covers monitoring, route table updates, and generally the dynamic operation of the router. Services, settings, and data streams that support and document the operation, traffic handling, and dynamic status of the router. Examples of control plane services include: logging (e.g. Syslog), routing protocols, status protocols like CDP and HSRP, network topology protocols like STP, and traffic security control protocols like IKE. Network control protocols like ICMP, NTP, ARP, and IGMP directed to or sent by the router itself also fall into this area.",
     defaultValue: "",
     expectedState: "Configuring the Authentication Rule and Interfaces Hostname#(config)ip admission name {Name} proxy http Hostname#(config)interface {type slot/port} Hostname#(config)ip access-group {Name} Hostname#(config)ip admission name Hostname#(config)ip admission max-login-attempts {number} 2 Control Plane The control plane covers monitoring, route table updates, and generally the dynamic operation of the router.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

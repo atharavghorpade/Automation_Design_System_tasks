@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure an appropriate domain name for the router. hostname (config)#ip domain-name {<em>domain-name</em>}",
     defaultValue: "No domain is set.",
     expectedState: "No domain is set.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 
