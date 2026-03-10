@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure the VTY ACL that will be used to restrict management access to the device. hostname(config)#access-list <vty_acl_number> permit tcp <vty_acl_block_with_mask> any hostname(config)#access-list <vty_acl_number> permit tcp host <vty_acl_host> any hostname(config)#deny ip any any log",
     defaultValue: "",
     expectedState: "Configure the VTY ACL that will be used to restrict management access to the device.",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

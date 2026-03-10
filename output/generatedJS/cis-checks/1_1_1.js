@@ -9,12 +9,17 @@ var metadata = {
     remediation: "Globally enable authentication, authorization and accounting (AAA) using the new- model command. hostname(config)#aaa new-model",
     defaultValue: "AAA is not enabled.",
     expectedState: "AAA is not enabled.",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
-function check(config) {  // config is the output of "show running-config | inc aaa new-model"
+function check(config) {
 
     if (!config) {
         return { status: "ERROR", line: 0 };

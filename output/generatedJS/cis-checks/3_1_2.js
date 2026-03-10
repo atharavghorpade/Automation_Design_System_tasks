@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Disable proxy ARP on all interfaces. hostname(config)#interface {interface} hostname(config-if)#no ip proxy-arp",
     defaultValue: "Enabled Page 173",
     expectedState: "Enabled Page 173",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

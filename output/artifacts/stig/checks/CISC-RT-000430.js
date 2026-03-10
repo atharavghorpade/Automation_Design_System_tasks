@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.45",
     stigId: "CISC-RT-000430",
-    ruleId: "RULE ID: SV-216591r531085",
-    groupId: "GROUP ID: V-216591",
+    ruleId: "SV-216591r531085",
+    groupId: "V-216591",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to not  redistribute routes between the management network routing domain and the managed  network routing domain.  GROUP ID: V-216591  RULE ID: SV-216591r531085",
     rationale: "If the gateway router is not a dedicated device for the OOBM network, several  safeguards must be implemented for containment of management and production traffic  boundaries; otherwise, it is possible that management traffic will not be separated from  production traffic.  Since the managed network and the management network are separate routing  domains, separate Interior Gateway Protocol routing instances must be configured on  the router, one for the managed network and one for the OOBM network. In addition,  the routes from the two domains must not be redistributed to each other.  Internal Only - General",

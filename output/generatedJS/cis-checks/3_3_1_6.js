@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure the EIGRP address family key chain. hostname(config)#router eigrp <virtual-instance-name> hostname(config-router)#address-family ipv4 autonomous-system {eigrp_as- number} hostname(config-router-af)#af-interface {interface-name} hostname(config-router-af-interface)#authentication key-chain {eigrp_key- chain_name}",
     defaultValue: "No key chains are specified for EIGRP",
     expectedState: "No key chains are specified for EIGRP",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

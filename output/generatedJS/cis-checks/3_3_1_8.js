@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure the interface with the EIGRP key chain. hostname(config)#interface {<em>interface_name</em>} hostname(config-if)#ip authentication key-chain eigrp {<em>eigrp_as- number</em>} {<em>eigrp_key-chain_name</em>}",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

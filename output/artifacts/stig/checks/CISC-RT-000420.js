@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.44",
     stigId: "CISC-RT-000420",
-    ruleId: "RULE ID: SV-216590r531085",
-    groupId: "GROUP ID: V-216590",
+    ruleId: "SV-216590r531085",
+    groupId: "V-216590",
     severity: "HIGH",
     description: "The Cisco out-of-band management (OOBM) gateway router must be configured to  have separate IGP instances for the managed network and management network.  GROUP ID: V-216590  RULE ID: SV-216590r531085",
     rationale: "If the gateway router is not a dedicated device for the OOBM network, implementation  of several safeguards for containment of management and production traffic boundaries  must occur. Since the managed and management network are separate routing  domains, configuration of separate Interior Gateway Protocol routing instances is critical  on the router to segregate traffic from each network.",

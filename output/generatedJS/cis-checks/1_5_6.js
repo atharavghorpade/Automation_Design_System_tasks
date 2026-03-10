@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure SNMP ACL for restricting access to the device from authorized management stations segmented in a trusted management zone. hostname(config)#access-list <<em>snmp_acl_number</em>> permit <<em>snmp_access-list</em>> hostname(config)#access-list deny any log",
     defaultValue: "SNMP does not use an access list.",
     expectedState: "SNMP does not use an access list.",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

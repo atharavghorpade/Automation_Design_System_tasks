@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Bind logging to the loopback interface. hostname(config)#logging source-interface loopback {<em>loopback_interface_number</em>}",
     defaultValue: "The wildcard interface address is used.",
     expectedState: "The wildcard interface address is used.",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

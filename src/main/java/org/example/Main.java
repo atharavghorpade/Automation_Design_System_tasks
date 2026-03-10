@@ -8,10 +8,10 @@ import org.example.Extractor.STIGMetadataExtractor;
 import org.example.Generator.CIS_checkGenerator;
 import org.example.Generator.JsonFileGenerator;
 import org.example.Generator.STIG_checkGenerator;
-import org.example.artifact.ArtifactManager;
+import org.example.artifact.ArtifactManager; // New import for artifact generation
 import org.example.model.CIS_Benchmark;
 import org.example.model.STIG_Benchmark;
-import org.example.runner.JSValidationRunner;
+import org.example.runner.JSValidationRunner; 
 
 public class Main {  
 

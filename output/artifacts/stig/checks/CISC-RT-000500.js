@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.52",
     stigId: "CISC-RT-000500",
-    ruleId: "RULE ID: SV-216598r531085",
-    groupId: "GROUP ID: V-216598",
+    ruleId: "SV-216598r531085",
+    groupId: "V-216598",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to reject inbound route advertisements for  any prefixes belonging to the local autonomous system (AS).  GROUP ID: V-216598  RULE ID: SV-216598r531085",
     rationale: "Accepting route advertisements belonging to the local AS can result in traffic looping or  being black holed, or at a minimum using a non-optimized path.",

@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.40",
     stigId: "CISC-RT-000397",
-    ruleId: "RULE ID: SV-230155r856673",
-    groupId: "GROUP ID: V-230155",
+    ruleId: "SV-230155r856673",
+    groupId: "V-230155",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to drop IPv6 packets containing the  NSAP address option within Destination Option header.  GROUP ID: V-230155  RULE ID: SV-230155r856673",
     rationale: "The optional and extensible natures of the IPv6 extension headers require higher  scrutiny since many implementations do not always drop packets with headers that it  cannot recognize, and hence could cause a Denial-of-Service on the target device. In  addition, the type, length, value (TLV) formatting provides the ability for headers to be  very large. This option type from RFC 1888 (OSI NSAPs and IPv6) has been  deprecated by RFC 4048.",

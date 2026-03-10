@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.31",
     stigId: "CISC-RT-000370",
-    ruleId: "RULE ID: SV-216585r856190",
-    groupId: "GROUP ID: V-216585",
+    ruleId: "SV-216585r856190",
+    groupId: "V-216585",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to have Cisco Discovery Protocol (CDP)  disabled on all external interfaces.  GROUP ID: V-216585  RULE ID: SV-216585r856190",
     rationale: "CDP is a Cisco proprietary neighbor discovery protocol used to advertise device  capabilities, configuration information, and device identity. CDP is media- and protocol- independent as it runs over layer 2; therefore, two network nodes that support different  layer 3 protocols can still learn about each other. Allowing CDP messages to reach  external network nodes provides an attacker a method to obtain information of the  network infrastructure that can be useful to plan an attack.",

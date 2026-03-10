@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure the RIPv2 authentication mode on the necessary interface(s) hostname(config)#interface <<em>interface_name</em>> hostname(config-if)#ip rip authentication mode md5",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

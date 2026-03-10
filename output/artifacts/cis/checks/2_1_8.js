@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable the PAD service. hostname(config)#no service pad",
     defaultValue: "Enabled by default.",
     expectedState: "Enabled by default.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

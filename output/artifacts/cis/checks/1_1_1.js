@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Globally enable authentication, authorization and accounting (AAA) using the new- model command. hostname(config)#aaa new-model",
     defaultValue: "AAA is not enabled.",
     expectedState: "AAA is not enabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

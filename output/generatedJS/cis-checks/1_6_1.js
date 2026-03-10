@@ -9,10 +9,15 @@ var metadata = {
     remediation: "To enable the feature enter the commands Hostname#(config)login block-for {**seconds**} attempts {**tries**} within {**seconds** All login attempts made via Telnet or SSH are denied during the quiet period; that is, no ACLs are exempt from the login period until the login quiet-mode access-class command is issued Page 98 Hostname#(config)login quiet-mode access class {**acl-name | acl-number**} Hostname#(config)login delay {**seconds**}",
     defaultValue: "no login-block enabled",
     expectedState: "no login-block enabled",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

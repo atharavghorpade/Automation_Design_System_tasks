@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.61",
     stigId: "CISC-RT-000590",
-    ruleId: "RULE ID: SV-216607r531085",
-    groupId: "GROUP ID: V-216607",
+    ruleId: "SV-216607r531085",
+    groupId: "V-216607",
     severity: "HIGH",
     description: "The Cisco MPLS router must be configured to use its loopback address as the source  address for LDP peering sessions.  GROUP ID: V-216607  RULE ID: SV-216607r531085",
     rationale: "Using a loopback address as the source address offers a multitude of uses for security,  access, management, and scalability of backbone routers. It is easier to construct  appropriate ingress filters for router management plane traffic destined to the network  management subnet since the source addresses will be from the range used for  loopback interfaces instead of from a larger range of addresses used for physical  interfaces. Log information recorded by authentication and syslog servers will record the  router's loopback address instead of the numerous physical interface addresses.",

@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure uRPF. hostname(config)#interface {<em>interface_name</em>} hostname(config-if)#ip verify unicast source reachable-via rx allow-default",
     defaultValue: "Unicast RPF is disabled.",
     expectedState: "Unicast RPF is disabled.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

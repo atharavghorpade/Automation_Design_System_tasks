@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Configure BGP neighbor authentication where feasible. hostname(config)#router bgp <<em>bgp_as-number</em>> hostname(config-router)#neighbor <<em>bgp_neighbor-ip</em> | <em>peer-group- name</em>> password <<em>password</em>>",
     defaultValue: "Not set",
     expectedState: "Not set",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

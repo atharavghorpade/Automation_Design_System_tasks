@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Designate one or more syslog servers by IP address. hostname(config)#logging host {syslog_server}",
     defaultValue: "System logging messages are not sent to any remote host.",
     expectedState: "System logging messages are not sent to any remote host.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

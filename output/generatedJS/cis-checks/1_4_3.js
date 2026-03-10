@@ -9,10 +9,15 @@ var metadata = {
     remediation: "Create a local user with an encrypted, complex (not easily guessed) password. hostname(config)#username {{em}LOCAL_USERNAME{/em}} secret {{em}LOCAL_PASSWORD{/em}}",
     defaultValue: "No passwords are set by default",
     expectedState: "No passwords are set by default",
-    generatedOn: "2026-03-06",
+<<<<<<< HEAD
+    generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

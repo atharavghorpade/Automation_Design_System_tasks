@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure an appropriate host name for the router. hostname(config)#hostname {<em>router_name</em>}",
     defaultValue: "The default hostname is Router.",
     expectedState: "The default hostname is Router.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 
