@@ -124,7 +124,7 @@ public class CIS_Benchmark {
 
     // ---------------- Audit ----------------
     public String getAudit() {
-        return audit;
+        return audit;  // Return raw audit text; validation is done in the setter
     }
 
     public void setAudit(String audit) {
