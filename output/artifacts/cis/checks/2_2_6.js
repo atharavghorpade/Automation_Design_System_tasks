@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure debug messages to include timestamps. hostname(config)#service timestamps debug datetime {<em>msec</em>} show- timezone",
     defaultValue: "Time stamps are applied to debug and logging messages.",
     expectedState: "Time stamps are applied to debug and logging messages.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

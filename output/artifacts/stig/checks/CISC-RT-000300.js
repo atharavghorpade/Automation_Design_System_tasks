@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.24",
     stigId: "CISC-RT-000300",
-    ruleId: "RULE ID: SV-216578r531085",
-    groupId: "GROUP ID: V-216578",
+    ruleId: "SV-216578r531085",
+    groupId: "V-216578",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to not redistribute static routes to an  alternate gateway service provider into BGP or an IGP peering with the NIPRNet or to  other autonomous systems.  GROUP ID: V-216578  RULE ID: SV-216578r531085",
     rationale: "If the static routes to the alternate gateway are being redistributed into an Exterior  Gateway Protocol or Interior Gateway Protocol to a NIPRNet gateway, this could make  traffic on NIPRNet flow to that particular router and not to the Internet Access Point  routers. This could not only wreak havoc with traffic flows on NIPRNet, but it could  overwhelm the connection from the router to the NIPRNet gateway(s) and also cause  traffic destined for outside of NIPRNet to bypass the defenses of the Internet Access  Points.  Internal Only - General",

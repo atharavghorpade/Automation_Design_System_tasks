@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure a strong, enable secret password. hostname(config)#enable secret 9 {ENABLE_SECRET_PASSWORD}",
     defaultValue: "No enable secret password setup by default",
     expectedState: "No enable secret password setup by default",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

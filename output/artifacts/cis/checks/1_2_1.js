@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Set the local user to privilege level 1. hostname(config)#username <LOCAL_USERNAME> privilege 1",
     defaultValue: "",
     expectedState: "Set the local user to privilege level 1.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

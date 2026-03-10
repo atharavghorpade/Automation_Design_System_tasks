@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Configure device timeout (10 minutes or less) to disconnect sessions after a fixed idle time. hostname(config)#line aux 0 hostname(config-line)#exec-timeout <timeout_in_minutes> <timeout_in_seconds>",
     defaultValue: "",
     expectedState: "Configure device timeout (10 minutes or less) to disconnect sessions after a fixed idle time.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

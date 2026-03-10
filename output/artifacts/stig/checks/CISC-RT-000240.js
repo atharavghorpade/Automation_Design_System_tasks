@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.18",
     stigId: "CISC-RT-000240",
-    ruleId: "RULE ID: SV-216572r531085",
-    groupId: "GROUP ID: V-216572",
+    ruleId: "SV-216572r531085",
+    groupId: "V-216572",
     severity: "HIGH",
     description: "The Cisco perimeter router must be configured to deny network traffic by default and  allow network traffic by exception.  GROUP ID: V-216572  RULE ID: SV-216572r531085",
     rationale: "A deny-all, permit-by-exception network communications traffic policy ensures that only  connections that are essential and approved are allowed.  This requirement applies to both inbound and outbound network communications traffic.  All inbound and outbound traffic must be denied by default. Firewalls and perimeter  routers should only allow traffic through that is explicitly permitted. The initial defense for  the internal network is to block any traffic at the perimeter that is attempting to make a  connection to a host residing on the internal network. In addition, allowing unknown or  undesirable outbound traffic by the firewall or router will establish a state that will permit  the return of this undesirable traffic inbound.  Internal Only - General",

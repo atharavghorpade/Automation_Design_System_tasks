@@ -1,8 +1,8 @@
 var metadata = {
     groupIdNumber: "1.58",
     stigId: "CISC-RT-000570",
-    ruleId: "RULE ID: SV-216605r856193",
-    groupId: "GROUP ID: V-216605",
+    ruleId: "SV-216605r856193",
+    groupId: "V-216605",
     severity: "HIGH",
     description: "The Cisco BGP router must be configured to limit the prefix size on any inbound route  advertisement to /24 or the least significant prefixes issued to the customer.  GROUP ID: V-216605  RULE ID: SV-216605r856193",
     rationale: "The effects of prefix de-aggregation can degrade router performance due to the size of  routing tables and also result in black-holing legitimate traffic. Initiated by an attacker or  a misconfigured router, prefix de-aggregation occurs when the announcement of a large  prefix is fragmented into a collection of smaller prefix announcements.",

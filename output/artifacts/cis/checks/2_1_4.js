@@ -9,10 +9,11 @@ var metadata = {
     remediation: "Disable the DHCP server. hostname(config)#<strong>no service dhcp</strong>",
     defaultValue: "Enabled by default, but also requires a DHCP pool to be set to activate the DHCP server.",
     expectedState: "Enabled by default, but also requires a DHCP pool to be set to activate the DHCP server.",
-    generatedOn: "2026-03-06",
+    generatedOn: "2026-03-10",
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
+// -----------------------------------------------------------
 
 function check(config) {
 

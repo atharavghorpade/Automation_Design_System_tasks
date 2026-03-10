@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Configure console logging level. hostname(config)#logging console critical",
     defaultValue: "Tthe default is to log all messages Additional Information: The console is a slow display device. In message storms some logging messages may be silently dropped when the console queue becomes full. Set severity levels accordingly. Page 138 CIS Controls: Controls Version Control IG 1 IG 2 IG 3 v8",
     expectedState: "Set severity levels accordingly.",
+<<<<<<< HEAD
     generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };

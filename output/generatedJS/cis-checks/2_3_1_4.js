@@ -9,7 +9,11 @@ var metadata = {
     remediation: "Configure each NTP Server to use a key ring using the following command. hostname(config)#ntp server {<em>ntp-server_ip_address</em>}{key <em>ntp_key_id</em>}",
     defaultValue: "No NTP key is set by default CIS Controls: Controls Version Control IG 1 IG 2 IG 3 v8",
     expectedState: "No NTP key is set by default CIS Controls: Controls Version Control IG 1 IG 2 IG 3 v8",
+<<<<<<< HEAD
     generatedOn: "2026-03-09",
+=======
+    generatedOn: "2026-03-10",
+>>>>>>> bd8ffc79618740127f9ddfcd8161efa6174d898f
     generatorVersion: "2.1",
     benchmark: "CIS"
 };
