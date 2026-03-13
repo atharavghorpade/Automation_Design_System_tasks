@@ -1,4 +1,5 @@
 package org.example.runner;
+import org.example.ProjectPaths;
 import org.graalvm.polyglot.*;
 import org.graalvm.polyglot.proxy.*;
 import javax.script.*;
@@ -12,10 +13,10 @@ public class JSValidationRunner {
 
     public static void runValidation() throws Exception {
 
-        String configFolder = "input/device-config";
+        String configFolder = ProjectPaths.DEVICE_CONFIG_DIR;
 
-        String stigFolder = "output/generatedJS/stig-checks";
-        String cisFolder = "output/generatedJS/cis-checks";
+        String stigFolder = ProjectPaths.STIG_CHECKS_DIR;
+        String cisFolder = ProjectPaths.CIS_CHECKS_DIR;
 
         File folder = new File(configFolder);
 
@@ -45,11 +46,11 @@ public class JSValidationRunner {
 
             writeJson("STIG",
                     stigResults,
-                    "output/reports/" + deviceName + "-stig-report.json");
+                    ProjectPaths.REPORTS_DIR + "/" + deviceName + "-stig-report.json");
 
             writeJson("CIS",
                     cisResults,
-                    "output/reports/" + deviceName + "-cis-report.json");
+                    ProjectPaths.REPORTS_DIR + "/" + deviceName + "-cis-report.json");
         }
 
         System.out.println("Validation completed for all devices.");
@@ -134,7 +135,7 @@ public class JSValidationRunner {
                                   List<Map<String, String>> results,
                                   String filePath) throws Exception {
 
-        File folder = new File("output/reports");
+        File folder = new File(ProjectPaths.REPORTS_DIR);
         if (!folder.exists()) folder.mkdirs();
 
         int pass = 0;

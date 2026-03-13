@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.example.ProjectPaths;
+
 public class ArtifactManager {
 
     public static void generateArtifactsFromJS(String jsDirectory, String benchmarkType) {
@@ -32,7 +34,7 @@ public class ArtifactManager {
                 String ruleName = jsFile.getName().replace(".js", "");
 
                 Path ruleFolder = Paths.get(
-                        "output/artifacts/" + benchmarkType + "/checks/" + ruleName
+                    ProjectPaths.ARTIFACTS_DIR + "/" + benchmarkType + "/checks/" + ruleName
                 );
 
                 if (!Files.exists(ruleFolder)) {

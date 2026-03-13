@@ -6,13 +6,14 @@ import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+import org.example.ProjectPaths;
 import org.example.model.STIG_Benchmark;
 
 public class STIG_checkGenerator {
 
     public static void generateChecks(List<STIG_Benchmark> rules) throws Exception {
 
-        File folder = new File("output/generatedJS/stig-checks");
+        File folder = new File(ProjectPaths.STIG_CHECKS_DIR);
 
         if (!folder.exists()) {
             folder.mkdirs();
@@ -20,7 +21,7 @@ public class STIG_checkGenerator {
 
         for (STIG_Benchmark rule : rules) {  // Generate a JS file for each STIG rule
 
-            String fileName = "output/generatedJS/stig-checks/"
+                String fileName = ProjectPaths.STIG_CHECKS_DIR + "/"
                     + safeFileName(rule.getGroupId()) + ".js";
 
             try (FileWriter writer = new FileWriter(fileName)) {

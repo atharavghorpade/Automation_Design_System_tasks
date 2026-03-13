@@ -19,8 +19,8 @@ public class Main {
 
         try {
 
-            File cisFile = PdfLoader.getPdfFileIfExists("input/cis"); // Assuming this method checks for the existence of a PDF file in the specified directory and returns it if found.
-            File stigFile = PdfLoader.getPdfFileIfExists("input/stig"); // Same as above but for the STIG directory.
+            File cisFile = PdfLoader.getPdfFileIfExists(ProjectPaths.CIS_BENCHMARK_DIR);
+            File stigFile = PdfLoader.getPdfFileIfExists(ProjectPaths.STIG_BENCHMARK_DIR);
 
             if (cisFile != null) {
 
@@ -54,13 +54,12 @@ public class Main {
 
             System.out.println("Validation Completed Successfully.");
 
-            // Artifact generation (added)
             ArtifactManager.generateArtifactsFromJS(
-                    "output/generatedJS/cis-checks",
+                    ProjectPaths.CIS_CHECKS_DIR,
                     "cis");
 
             ArtifactManager.generateArtifactsFromJS(
-                    "output/generatedJS/stig-checks",
+                    ProjectPaths.STIG_CHECKS_DIR,
                     "stig");
 
             System.out.println("Artifact generation completed.");

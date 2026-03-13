@@ -11,6 +11,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.example.ProjectPaths;
 
 public class JsonFileGenerator {
 
@@ -24,7 +25,7 @@ public class JsonFileGenerator {
         }
 
         // Create output folder if not exists
-        Path outputPath = Paths.get("output\\metadata");
+        Path outputPath = Paths.get(ProjectPaths.METADATA_DIR);
         if (!Files.exists(outputPath)) {
             Files.createDirectories(outputPath);
         }

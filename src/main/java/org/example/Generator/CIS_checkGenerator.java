@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.example.ProjectPaths;
 import org.example.model.CIS_Benchmark;
 
 
@@ -14,7 +15,7 @@ public class CIS_checkGenerator {   // Generator for CIS Benchmark checks in Jav
 
     public static void generateChecks(List<CIS_Benchmark> rules) throws Exception {
 
-        File folder = new File("output/generatedJS/cis-checks");
+        File folder = new File(ProjectPaths.CIS_CHECKS_DIR);
         if (!folder.exists()) {  // Ensure output directory exists
             folder.mkdirs();
         }
@@ -27,7 +28,7 @@ public class CIS_checkGenerator {   // Generator for CIS Benchmark checks in Jav
                 continue;
             }
 
-            String fileName = "output/generatedJS/cis-checks/"
+                String fileName = ProjectPaths.CIS_CHECKS_DIR + "/"
                     + safeFileName(rule.getRuleNumber()) + ".js";
 
             try (FileWriter writer = new FileWriter(fileName)) {
